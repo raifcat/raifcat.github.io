@@ -1,0 +1,462 @@
+body{
+    background-color: rgb(42, 39, 37);
+
+}
+
+hr{
+    color: rgb(227, 218, 195);
+}
+
+.main-image{
+    background-image: url(./media/images/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 110%;
+    min-height: 110%;
+    position: fixed;
+
+}
+
+.watermark{
+    margin: 0;
+    margin-left: 5px;
+    margin-top: 5px;
+    font-family: TF2Secondary;
+    color: rgb(148, 148, 148);
+}
+
+@font-face {
+    font-family: TF2Build;
+    src: url(./media/fonts/tf2build.ttf);
+}
+
+@font-face {
+    font-family: TF2Secondary;
+    src: url(./media/fonts/TF2secondary.ttf);
+}
+
+.main-div{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.item-card-div{
+    background-image: linear-gradient(180deg,rgb(73,66,58), rgb(34, 30, 26));
+    border-radius: 8px;
+    padding: 20px;
+    padding-top: 0;
+    padding-bottom: 40px;
+    width: 750px;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    border-top: solid 2px rgb(122, 118, 112);
+    border-bottom: solid 1px rgb(20, 19, 19);
+    top: 10px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.item-card-text-div{
+    text-align: center;
+    
+}
+
+.item-card-name{
+    font-family: TF2Build;
+    color: rgb(255, 215, 0);
+    font-size: 32px;
+    margin-top: 15px;
+    margin-bottom: 0;
+    overflow-wrap: break-word;
+}
+
+.item-card-level{
+    color: rgb(114,103,90);
+    font-family: TF2Secondary;
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 28px;
+    overflow-wrap: break-word;
+}
+
+.item-card-text{
+    font-family: TF2Secondary;
+    margin-top: 2px;
+    margin-bottom: 0;
+    font-size: 25px;
+    width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.positive-color {
+    color: rgb(143, 190, 236);
+}
+
+.negative-color {
+    color: rgb(255, 62, 62);
+}
+
+.neutral-color {
+    color: rgb(227, 218, 195);
+}
+
+.unusual-color{
+    color: rgb(134, 80, 172);
+}
+
+.limited-color{
+    color: rgb(0, 160, 0);
+    margin-top: 25px;
+}
+
+.tradable-color {
+    color: rgb(227, 218, 195);
+    margin-top: 25px;
+}
+
+.gift-color {
+    color: rgb(143, 190, 236);
+    margin-top: 25px;
+}
+
+
+.incomplete-item-set-color{
+    color: rgb(140, 138, 138);
+}
+
+.complete-item-set-color {
+    color: rgb(150, 177, 4)
+}
+
+.item-set-name-color {
+    color: rgb(226, 255, 7);
+    margin-top: 25px;
+}
+
+
+.item-card-img-div{
+    background-color: rgb(39, 35, 30);
+    border-radius: 8px;
+    width: 200px;
+    height: 150px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.item-card-img-div-center{
+    justify-content: center;
+    
+}
+
+.item-card-img-div img{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 100%;
+}
+
+.item-card-img-icons{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: flex;
+    flex-flow: column;
+}
+
+.config-div{
+    background-color: rgb(41,37,38);
+    margin-top: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    border: solid 3px rgb(131,116,106);
+    margin-bottom: 15px;
+    width: 1200px;
+}
+
+.config-input-div{
+    display: flex;
+    margin-top: 15px;
+}
+
+.config-input-div p{
+    color: rgb(109,99,87);
+    font-family: TF2Build;
+    margin-top: auto;
+    margin-bottom: auto;
+    min-width: 300px;
+    font-size: 25px;
+
+}
+
+.config-text-header{
+    color: rgb(227, 218, 195);
+    font-family: TF2Build;
+    margin-top: 2px;
+    margin-bottom: 0;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+/*
+.config-input-set-div{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    outline: dashed 2px rgb(174, 174, 174);
+    outline-offset: 10px;
+}
+*/
+
+.input-button{
+    background-color: rgb(118,107,94);
+    color: rgb(227, 218, 195);
+    border: none;
+    padding: 20px;
+    font-size: 25px;
+    border-radius: 8px;
+    font-family: TF2Build;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.input-button:hover{
+    background-color: rgb(146,71,56);
+    cursor: pointer;
+}
+
+.select-input{
+    background-color: rgba(0,0,0,0);
+    color: rgb(174,174,174);
+    width: 100%;
+    font-family: TF2Build;
+    font-size: 25px;
+    padding: 10px;
+    padding-left: 0;
+
+}
+
+.input-text{
+    background-color: rgb(15, 15, 15);
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    height: 50px;
+    color: rgb(174, 174, 174);
+    font-family: TF2Build;
+    font-size: 25px;
+    padding-left: 10px;
+}
+
+
+
+.file-input::file-selector-button{
+    background-color: rgb(15, 15, 15);
+    border: none;
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: rgb(174, 174, 174);
+    border-radius: 8px;
+    font-family: TF2Build;
+    font-size: 25px;
+}
+
+.file-input[type="file"]{
+    color: rgb(174,174,174);
+    font-size: 25px;
+    font-family: TF2Secondary;
+}
+
+.input-text-light {
+    background-color: rgb(15, 15, 15);
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    height: 40px;
+    color: rgb(174, 174, 174);
+    font-family: TF2Secondary;
+    font-size: 25px;
+    padding-left: 10px;
+}
+
+.input-text-light:disabled{
+    background-color: black;
+    outline: dotted 5px rgb(30, 30, 30);
+    outline-offset: -5px;
+    cursor:not-allowed;
+    color: rgb(80,80,80);
+}
+
+
+.attributes-div{
+    background-color: black;
+    min-height: 40px;
+    max-height: 370px;
+    overflow-y: auto;
+    border-radius: 8px;
+    padding: 10px;
+
+}
+
+.item-set-div {
+    background-color: black;
+    min-height: 40px;
+    max-height: 370px;
+    overflow-y: auto;
+    border-radius: 8px;
+    padding: 10px;
+
+}
+
+.main-attributes-div{
+    width: 100%;
+}
+
+.attributes-item-div{
+    display: flex;
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.item-set-item-div{
+    display: flex;
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.item-set-item-div:last-child {
+    margin-bottom: 5px;
+}
+
+.attributes-item-div:last-child{
+    margin-bottom: 5px;
+}
+
+.attributes-text-input{
+    background-color: rgb(15,15,15);
+    border: solid 1px rgb(174, 174, 174);
+    width: 100%;
+    height: 100%;
+    color: rgb(174, 174, 174);
+    font-family: TF2Secondary;
+    font-size: 25px;
+}
+
+.item-set-text-input{
+    background-color: rgb(15,15,15);
+    border: solid 1px rgb(174, 174, 174);
+    width: 100%;
+    height: 100%;
+    color: rgb(174, 174, 174);
+    font-family: TF2Secondary;
+    font-size: 25px;
+}
+
+.attributes-select-input{
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(174, 174, 174);
+    font-family: TF2Build;
+    font-size: 20px;
+    padding: 10px;
+    height: fit-content;
+    padding-left: 0;
+    margin-left: 10px;
+    border-color: rgb(174, 174, 174);
+}
+
+.item-set-select-input{
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(174, 174, 174);
+    font-family: TF2Build;
+    font-size: 20px;
+    padding: 10px;
+    height: fit-content;
+    padding-left: 0;
+    margin-left: 10px;
+    border-color: rgb(174, 174, 174);
+}
+
+.attributes-delete-button{
+    background-color: black;
+    border: solid 1px rgb(174, 174, 174);
+    margin-left: 10px;
+    padding: 10px;
+    height: fit-content;
+}
+
+.attribute-add-button{
+    background-color: rgb(118,107,94);
+    color: rgb(227, 218, 195);
+    border: none;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 8px;
+    font-family: TF2Build;
+    width: 100%;
+    position:relative;
+    margin-top: 10px;
+    
+}
+
+.attribute-add-button:hover {
+    background-color: rgb(146, 71, 56);
+}
+
+option{
+    background-color: black;
+}
+
+.action-button-divs{
+    display: flex;
+    width: 100%;
+}
+
+.checkbox-input{
+    min-height: 35px;
+    min-width: 35px;
+    accent-color: black;
+    margin: 0;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+input[type=date] input.form-control {
+
+    background-color: white !important;
+    color: black !important;
+}
+
+.checkbox-input:disabled{
+    cursor:not-allowed;
+}
+
+
+.right-side{
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.in-flexbox{
+    margin-left: 10px;
+}
+
+.margin-left{
+    margin-left: 10px;
+}
+
+.vertical-column{
+    display: flex;
+    width: 100%;
+    flex-flow: column;
+}
