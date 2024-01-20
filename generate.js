@@ -33,6 +33,9 @@ const giftDateInput = document.getElementById("gift-date-input")
 const itemSetCheckboxInput = document.getElementById("item-set-checkbox-input")
 const itemSetNameInput = document.getElementById("item-set-text-input")
 
+const itemSetBonusCheckboxInput = document.getElementById("item-set-bonus-checkbox-input")
+const itemSetBonusTextInput = document.getElementById("item-set-bonus-text-input")
+
 const cardItemName = document.getElementById("card-item-name");
 const cardItemLevel = document.getElementById("card-item-level");
 const cardItemImg = document.getElementById("item-card-img");
@@ -57,6 +60,9 @@ const attributesDiv = document.getElementById("attributes-div")
 
 const cardItemSetListDiv = document.getElementById("item-set-list-div")
 const cardItemSetName = document.getElementById("item-set-name")
+
+const cardItemSetBonus = document.getElementById("item-set-bonus")
+const cardItemSetBonusText = document.getElementById("item-set-bonus-text")
 
 qualityColours = ["#FFD700", "#B2B2B2", "#CF6A32", "#4D7455", "#476291", "#8650AC", "#AA0000", "#38F3AB", "#FAFAFA", "#70B04A", "#A50F79", "#B0C3D9", "#5E98D9", "#4B69FF", "#8847FF", "#D32CE6", "#EB4B4B"];
 
@@ -223,6 +229,15 @@ function generateButtonClicked(){
         cardItemSetName.style.display = "none"
     }
 
+    if (itemSetBonusCheckboxInput.checked && !itemSetBonusCheckboxInput.disabled && itemSetCheckboxInput.checked){
+        cardItemSetBonus.style.display = "block"
+        cardItemSetBonusText.style.display = "block"
+        cardItemSetBonusText.innerHTML = itemSetBonusTextInput.value
+    } else{
+        cardItemSetBonus.style.display = "none"
+        cardItemSetBonusText.style.display = "none"
+    }
+
     
 
     console.log(allItemSetsText)
@@ -323,4 +338,16 @@ function takeScreenshot(){
         image.href = img;
         image.click()
     });
+}
+
+function itemSetCheckboxInputOnClick(){
+    
+    itemSetNameInput.disabled = !itemSetCheckboxInput.checked; 
+    itemSetBonusCheckboxInput.disabled = !itemSetCheckboxInput.checked
+
+    if (itemSetBonusCheckboxInput.disabled){
+        itemSetBonusTextInput.disabled = true;
+    } else if (!itemSetBonusCheckboxInput.disabled && itemSetBonusCheckboxInput.checked){
+        itemSetBonusTextInput.disabled = false;
+    }
 }

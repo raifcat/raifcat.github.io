@@ -54,6 +54,8 @@
                 <div id="item-set-list-div">
 
                 </div>
+                <p class="item-card-text item-set-name-color" id="item-set-bonus" style="display: none;">Item Set Bonus:</p>
+                <p class="item-card-text incomplete-item-set-color" id="item-set-bonus-text" style="display: none;">Leave a calling card on your enemies</p>
 
                 <p class="item-card-text limited-color" id="card-item-limit" style="display: none;"></p>
                 <p class="item-card-text tradable-color" id="card-item-tradable" style="display: none;" ></p>
@@ -266,10 +268,11 @@
                 <div class="main-attributes-div">
                     
                     <div class="action-button-divs">
-                        <input type="checkbox" class="checkbox-input" id="item-set-checkbox-input"  accept=".jpg, .jpeg, .png, .gif" onclick="itemSetNameInput.disabled = !itemSetCheckboxInput.checked">
+                        <input type="checkbox" class="checkbox-input" id="item-set-checkbox-input"  accept=".jpg, .jpeg, .png, .gif" onclick="itemSetCheckboxInputOnClick()">
 
                         <div class="vertical-column">
                             <input type="text" class="input-text-light in-flexbox" id="item-set-text-input" disabled value="Item set name" style="width: auto; margin-bottom: 5px;">
+                            
                             
                             <div class="item-set-div margin-left" id="item-set-div">
                             
@@ -295,7 +298,15 @@
                 </div>
                 
             </div>
+            <div class="config-input-div">
+                <p>item set bonus? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the item set bonus of the item"></p>
+                <div class="action-button-divs" >
+                    <input type="checkbox" class="checkbox-input" id="item-set-bonus-checkbox-input" disabled accept=".jpg, .jpeg, .png, .gif" onclick="itemSetNameInput.disabled = !itemSetCheckboxInput.checked; itemSetBonusTextInput.disabled = !itemSetBonusCheckboxInput.checked" title="Can only be enabled if item sets is enabled">
+                    <input type="text" class="input-text-light in-flexbox" id="item-set-bonus-text-input" disabled value="Leave a calling card on your victims" disabled>
+                </div>
+            </div>
 
+            
             
             <div class="action-button-divs">
                 <button class="input-button" id="generate-button" onclick="generateButtonClicked()">
