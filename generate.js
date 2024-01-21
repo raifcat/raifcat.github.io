@@ -21,7 +21,6 @@ const achievementCheckboxInput = document.getElementById("achievement-checkbox-i
 
 const halloweenCheckboxInput = document.getElementById("halloween-checkbox-input")
 const pyrolandCheckboxInput = document.getElementById("pyroland-checkbox-input")
-const strangeCheckboxInput = document.getElementById("strange-checkbox-input")
 
 const craftedCheckboxInput = document.getElementById("crafted-checkbox-input")
 const craftedTextInput = document.getElementById("crafted-text-input")
@@ -35,6 +34,9 @@ const itemSetNameInput = document.getElementById("item-set-text-input")
 
 const itemSetBonusCheckboxInput = document.getElementById("item-set-bonus-checkbox-input")
 const itemSetBonusTextInput = document.getElementById("item-set-bonus-text-input")
+
+const strangeCheckboxInput = document.getElementById("strange-counters-checkbox-input")
+const strangeCounterDiv = document.getElementById("strange-counters-div")
 
 const cardItemName = document.getElementById("card-item-name");
 const cardItemLevel = document.getElementById("card-item-level");
@@ -63,6 +65,8 @@ const cardItemSetName = document.getElementById("item-set-name")
 
 const cardItemSetBonus = document.getElementById("item-set-bonus")
 const cardItemSetBonusText = document.getElementById("item-set-bonus-text")
+
+const cardItemStrangeCounterDiv = document.getElementById("strange-counters-list-div")
 
 qualityColours = ["#FFD700", "#B2B2B2", "#CF6A32", "#4D7455", "#476291", "#8650AC", "#AA0000", "#38F3AB", "#FAFAFA", "#70B04A", "#A50F79", "#B0C3D9", "#5E98D9", "#4B69FF", "#8847FF", "#D32CE6", "#EB4B4B"];
 
@@ -153,8 +157,38 @@ function generateButtonClicked(){
 
     if (strangeCheckboxInput.checked) {
         cardItemStrangeIcon.style.display = "block"
+        cardItemLevel.style.display = "none"
+        cardItemStrangeCounterDiv.style.display = "block"
+        cardItemStrangeCounterDiv.innerHTML = ""
+
+        const allStrangeCounters = document.getElementsByClassName('strange-counters-text-input');
+        const allStrangeCountersNumber = document.getElementsByClassName('strange-counters-number-input');
+        
+        var allStrangeCountersTextArray = [];
+        var allStrangeCounterNumberArray = []
+
+
+        for (var i = 0; i < allStrangeCounters.length; i++) {
+            allStrangeCountersTextArray.push(allStrangeCounters[i].value);
+            allStrangeCounterNumberArray.push(allStrangeCountersNumber[i].value);
+
+            const attributeText = document.createElement("p")
+
+            if (i==0){
+                attributeText.innerHTML = `${itemTypeInput.value} - ${allStrangeCounters[i].value}: ${allStrangeCountersNumber[i].value}`
+            }else{
+                attributeText.innerHTML = `(${allStrangeCounters[i].value}: ${allStrangeCountersNumber[i].value})`
+            }
+            
+            attributeText.className = "item-card-text level-color"
+
+            cardItemStrangeCounterDiv.appendChild(attributeText)
+        }
+
     } else {
         cardItemStrangeIcon.style.display = "none"
+        cardItemLevel.style.display = "block"
+        cardItemStrangeCounterDiv.style.display = "none"
     }
 
     if (halloweenCheckboxInput.checked) {
@@ -238,10 +272,9 @@ function generateButtonClicked(){
         cardItemSetBonusText.style.display = "none"
     }
 
-    
+    if (strangeCounterDiv.checked){
 
-    console.log(allItemSetsText)
-    console.log(allItemSetsTextType)
+    }
 
     window.scrollTo(0,0)
 
@@ -329,6 +362,35 @@ function generateNewItemSetMember(){
     document.getElementById("item-set-div").appendChild(attributeDiv)
 }
 
+function generateNewStrangeCounter(){
+    const attributeDiv = document.createElement("div");
+    attributeDiv.className = "strange-counters-item-div"
+
+    const inputDiv = document.createElement("input")
+    inputDiv.className = "strange-counters-text-input"
+    attributeDiv.appendChild(inputDiv)
+
+    const selectDiv = document.createElement("input");
+    selectDiv.type = "number"
+    selectDiv.className = "strange-counters-number-input margin-left"
+    selectDiv.style = "width: 200px;"
+    attributeDiv.appendChild(selectDiv)
+
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "attributes-delete-button"
+    deleteButton.onclick = function () { this.parentNode.parentNode.removeChild(this.parentNode) }
+    attributeDiv.appendChild(deleteButton)
+
+
+    const buttonImage = document.createElement("img")
+    buttonImage.src = "./media/images/delete.png"
+    buttonImage.height = 20
+    buttonImage.width = 20
+    deleteButton.appendChild(buttonImage)
+
+    document.getElementById("strange-counters-div").appendChild(attributeDiv)
+}
+
 
 function takeScreenshot(){
     html2canvas(document.querySelector("#item-card-div")).then(canvas => {
@@ -338,6 +400,30 @@ function takeScreenshot(){
         image.href = img;
         image.click()
     });
+}
+
+function takeScreenshotAndCopy(){
+    html2canvas(document.querySelector("#item-card-div")).then(canvas => {
+        var img = canvas.toDataURL("image/png");
+        
+        navigator.clipboard.write([
+            new ClipboardItem({
+                'image/png': urltoBlob(img)
+            })
+        ]);
+    });
+}
+
+function urltoBlob(dataUrl) {
+    var array = dataUrl.split(','), mime = array[0].match(/:(.*?);/)[1];
+
+    string = atob(array[1]), n = string.length, uInt8array = new Uint8Array(n);
+
+    while (n--) {
+        uInt8array[n] = string.charCodeAt(n);
+    }
+
+    return new Blob([uInt8array], { type: mime });
 }
 
 function itemSetCheckboxInputOnClick(){

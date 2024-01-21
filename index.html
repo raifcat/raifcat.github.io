@@ -36,6 +36,9 @@
             <div class="item-card-text-div">
                 <p class="item-card-name" id="card-item-name">Conniver's Kunai</p>
                 <p class="item-card-level" id="card-item-level">Level 1 Knife</p>
+                <div id="strange-counters-list-div">
+
+                </div>
                 <p class="item-card-text unusual-color" id="card-item-unusual" style="display: none;"></p>
                 <p class="item-card-text unusual-color" id="card-item-festivized" style="display: none;"></p>
                 <p class="item-card-text negative-color" id="card-item-restriction" style="display: none;">Holiday Restriction: Halloween / Full Moon</p>
@@ -187,8 +190,27 @@
             </div>
 
             <div class="config-input-div">
-                <p>Show strange counter icon? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the strange counter on the image"></p>
-                <input type="checkbox" class="checkbox-input right-side" id="strange-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                <p>Show strange? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the strange part on the image. However, the strange parts will replace the level"></p>
+                
+                <div class="action-button-divs">
+                    <input type="checkbox" class="checkbox-input right-side" id="strange-counters-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+
+                    <div class="main-attributes-div" style="margin-left: 10px;">
+
+                        <div class="strange-counters-div" id="strange-counters-div">
+
+                            <div class="strange-counters-item-div">
+                                <input type="text" class="strange-counters-text-input" value="Kills">
+                                <input type="number" class="strange-counters-number-input margin-left"  value="17">
+                                <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode) "><img src="./media/images/delete.png" alt="" height="20px" width="20px" ;></button>
+                            </div>
+                        
+                        </div>
+
+                
+                        <button class="attribute-add-button" onclick="generateNewStrangeCounter()">Add new strange part</button>
+                    </div>
+                </div>
             </div>
 
             <div class="config-input-div">
@@ -280,6 +302,15 @@
                                 <div class="item-set-item-div">
                                     <input type="text" class="item-set-text-input" value="Item set member #1">
                                     <select name="" id="" class="item-set-select-input">
+                                        <option value="complete">Complete</option>
+                                        <option value="incomplete">Incomplete</option>
+                                    </select>
+                                    <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode) "><img src="./media/images/delete.png" alt="" height="20px" width="20px" ;></button>
+                                </div>
+
+                                <div class="item-set-item-div">
+                                    <input type="text" class="item-set-text-input" value="Item set member #2">
+                                    <select name="" id="" class="item-set-select-input">
                                         <option value="incomplete">Incomplete</option>
                                         <option value="complete">Complete</option>
                                     </select>
@@ -288,7 +319,7 @@
   
                             </div>
 
-                            <button class="attribute-add-button" onclick="generateNewItemSetMember()" style="width: auto; margin-left: 10px; margin-top: 5px;">Add new attribute</button>
+                            <button class="attribute-add-button" onclick="generateNewItemSetMember()" style="width: auto; margin-left: 10px; margin-top: 5px;">Add new item set</button>
                         </div>
 
                         
@@ -314,6 +345,9 @@
                 </button>
                 <button class="input-button" id="generate-button" onclick="takeScreenshot()" style="margin-left: 10px;">
                     Download .png
+                </button>
+                <button class="input-button" id="generate-button" onclick="takeScreenshotAndCopy()" style="margin-left: 10px;">
+                    Copy .png
                 </button>
             </div>
 

@@ -129,6 +129,9 @@ hr{
     margin-top: 25px;
 }
 
+.level-color{
+    color: rgb(114, 103, 90);
+}
 
 .incomplete-item-set-color{
     color: rgb(140, 138, 138);
@@ -317,6 +320,16 @@ hr{
 
 }
 
+.strange-counters-div {
+    background-color: black;
+    min-height: 40px;
+    max-height: 370px;
+    overflow-y: auto;
+    border-radius: 8px;
+    padding: 10px;
+
+}
+
 .main-attributes-div{
     width: 100%;
 }
@@ -327,13 +340,29 @@ hr{
     margin-bottom: 15px;
 }
 
-.item-set-item-div{
+.strange-counters-item-div{
+    display: flex;
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.item-set-item-div {
+    display: flex;
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.strange-counters-item-div {
     display: flex;
     height: 40px;
     margin-bottom: 15px;
 }
 
 .item-set-item-div:last-child {
+    margin-bottom: 5px;
+}
+
+.strange-counters-item-div:last-child {
     margin-bottom: 5px;
 }
 
@@ -361,6 +390,28 @@ hr{
     font-size: 25px;
 }
 
+.strange-counters-text-input {
+    background-color: rgb(15, 15, 15);
+    border: solid 1px rgb(174, 174, 174);
+    width: 100%;
+    height: 100%;
+    color: rgb(174, 174, 174);
+    font-family: TF2Secondary;
+    font-size: 25px;
+}
+
+.strange-counters-number-input {
+    background-color: rgb(15, 15, 15);
+    border: solid 1px rgb(174, 174, 174);
+    width: 100%;
+    height: 100%;
+    color: rgb(174, 174, 174);
+    font-family: TF2Secondary;
+    font-size: 25px;
+    width: 200px;
+}
+
+
 .attributes-select-input{
     background-color: rgba(0, 0, 0, 0);
     color: rgb(174, 174, 174);
@@ -374,6 +425,18 @@ hr{
 }
 
 .item-set-select-input{
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(174, 174, 174);
+    font-family: TF2Build;
+    font-size: 20px;
+    padding: 10px;
+    height: fit-content;
+    padding-left: 0;
+    margin-left: 10px;
+    border-color: rgb(174, 174, 174);
+}
+
+.strange-counters-select-input {
     background-color: rgba(0, 0, 0, 0);
     color: rgb(174, 174, 174);
     font-family: TF2Build;
