@@ -17,6 +17,8 @@
             <!--you are a bad person if you remove this-->
             <p class="watermark">Made with raifcat.github.io</p> 
 
+            <p class="credits" id="item-card-credits-text" style="display: none;">Made by</p>
+
             <div class="item-card-class-div">
                 <img src="./media/images/Scout.png" alt="" id="item-card-scout-img" style="display: none;">
                 <img src="./media/images/Soldier.png" alt="" id="item-card-soldier-img" style="display: none;">
@@ -414,7 +416,13 @@
                 </div>
             </div>
 
-            
+            <div class="config-input-div">
+                <p>Credit text <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Give credit to yourself!"></p>
+                <div class="action-button-divs">
+                    <input type="checkbox" class="checkbox-input" id="credit-checkbox-input" onclick="creditTextInput.disabled = !creditCheckboxInput.checked" accept=".jpg, .jpeg, .png, .gif">
+                    <input type="text" class="input-text-light in-flexbox" id="credit-text-input" disabled value="Scout from tea for 2">
+                </div>
+            </div>
             
             <div class="action-button-divs">
                 <button class="input-button" id="generate-button" onclick="generateButtonClicked()">

@@ -42,6 +42,9 @@ const rankCheckboxInput = document.getElementById("rank-checkbox-input")
 
 const itemTagCheckboxInput = document.getElementById("item-tag-checkbox-input")
 
+const creditCheckboxInput = document.getElementById("credit-checkbox-input")
+const creditTextInput = document.getElementById("credit-text-input")
+
 const scoutCheckboxInput = document.getElementById("scout-checkbox-input")
 const soldierCheckboxInput = document.getElementById("soldier-checkbox-input")
 const pyroCheckboxInput = document.getElementById("pyro-checkbox-input")
@@ -72,6 +75,8 @@ const cardItemFestivizedText = document.getElementById("card-item-festivized")
 const cardItemLimitedText = document.getElementById("card-item-limit")
 const cardItemTradableText = document.getElementById("card-item-tradable")
 const cardItemRestrictionText = document.getElementById("card-item-restriction")
+
+const cardItemCreditText = document.getElementById("item-card-credits-text")
 
 const cardItemUserGift = document.getElementById("card-item-gift-user")
 const cardItemDateGift = document.getElementById("card-item-gift-date")
@@ -345,6 +350,13 @@ function generateButtonClicked(){
     if (medicCheckboxInput.checked) { cardItemMedicImg.style.display = "block" } else { cardItemMedicImg.style.display = "none" }
     if (sniperCheckboxInput.checked) { cardItemSniperImg.style.display = "block" } else { cardItemSniperImg.style.display = "none" }
     if (spyCheckboxInput.checked) { cardItemSpyImg.style.display = "block" } else { cardItemSpyImg.style.display = "none" }
+
+    if (creditCheckboxInput.checked){
+        cardItemCreditText.style.display = "block"
+        cardItemCreditText.innerHTML = `Made by ${creditTextInput.value}`
+    } else{
+        cardItemCreditText.style.display = "none"
+    }
 
     window.scrollTo(0,0)
 
