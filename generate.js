@@ -38,6 +38,10 @@ const itemSetBonusTextInput = document.getElementById("item-set-bonus-text-input
 const strangeCheckboxInput = document.getElementById("strange-counters-checkbox-input")
 const strangeCounterDiv = document.getElementById("strange-counters-div")
 
+const rankCheckboxInput = document.getElementById("rank-checkbox-input")
+
+const itemTagCheckboxInput = document.getElementById("item-tag-checkbox-input")
+
 const cardItemName = document.getElementById("card-item-name");
 const cardItemLevel = document.getElementById("card-item-level");
 const cardItemImg = document.getElementById("item-card-img");
@@ -68,6 +72,8 @@ const cardItemSetBonusText = document.getElementById("item-set-bonus-text")
 
 const cardItemStrangeCounterDiv = document.getElementById("strange-counters-list-div")
 
+
+
 qualityColours = ["#FFD700", "#B2B2B2", "#CF6A32", "#4D7455", "#476291", "#8650AC", "#AA0000", "#38F3AB", "#FAFAFA", "#70B04A", "#A50F79", "#B0C3D9", "#5E98D9", "#4B69FF", "#8847FF", "#D32CE6", "#EB4B4B"];
 
 positiveColour = "rgb(143,190,236)"
@@ -75,9 +81,18 @@ negativeColour = "rgb(255,62,62)"
 neutralColour = "rgb(227,218,195)"
 
 
+
 function generateButtonClicked(){
 
-    cardItemName.innerHTML = itemNameInput.value ?? "Conniver's Kunai";
+
+    if (!itemTagCheckboxInput.checked) {
+        cardItemName.innerHTML = itemNameInput.value;
+    } else{
+        cardItemName.innerHTML = `"${itemNameInput.value}"`;
+    }
+    
+
+
     if (itemImageInput.files[0]){
         cardItemImg.src = window.URL.createObjectURL(itemImageInput.files[0])
     }
@@ -155,6 +170,7 @@ function generateButtonClicked(){
         cardItemUnusualIcon.style.display = "none"
     }
 
+
     if (strangeCheckboxInput.checked) {
         cardItemStrangeIcon.style.display = "block"
         cardItemLevel.style.display = "none"
@@ -168,6 +184,13 @@ function generateButtonClicked(){
         var allStrangeCounterNumberArray = []
 
 
+        strangeQualities = ["Strange", "Unremarkable", "Scarcely Lethal", "Mildly Menacing", "Somewhat Threatening", "Uncharitable", "Notably Dangerous", "Sufficiently Lethal", "Truly Feared", "Spectacularly Lethal", "Gore-Spattered", "Wicked Nasty", "Positively Inhumane", "Totally Ordinary", "Face-Melting", "Rage-Inducing", "Server-Clearing", "Epic", "Legendary", "Australian", "Hale's Own"]
+        strangeQualityKills = [0, 10, 25, 45, 70, 100, 135, 175, 225, 275, 350, 500, 750, 999, 1000, 1500, 2500, 5000, 7500, 7616, 8500]
+
+        if (itemQualityInput.value == "2"){
+
+        }
+
         for (var i = 0; i < allStrangeCounters.length; i++) {
             allStrangeCountersTextArray.push(allStrangeCounters[i].value);
             allStrangeCounterNumberArray.push(allStrangeCountersNumber[i].value);
@@ -176,6 +199,26 @@ function generateButtonClicked(){
 
             if (i==0){
                 attributeText.innerHTML = `${itemTypeInput.value} - ${allStrangeCounters[i].value}: ${allStrangeCountersNumber[i].value}`
+
+                if (!itemTagCheckboxInput.checked && rankCheckboxInput.checked && !rankCheckboxInput.disabled){
+                    cardItemName.innerHTML = `${strangeQualities[0]} ${cardItemName.innerHTML}`
+                }
+                
+                attributeText.innerHTML = `${strangeQualities[0]} ${itemTypeInput.value} - ${allStrangeCounters[i].value}: ${allStrangeCountersNumber[i].value}`
+
+                for (var a = 0; a < strangeQualities.length; a++) {
+                    if (allStrangeCountersNumber[i].value >= strangeQualityKills[a+1]){
+
+                        if (!itemTagCheckboxInput.checked && rankCheckboxInput.checked && !rankCheckboxInput.disabled){
+                            cardItemName.innerHTML = `${strangeQualities[a + 1]} ${itemNameInput.value}`
+                        }
+                        
+                        attributeText.innerHTML = `${strangeQualities[a + 1]} ${itemTypeInput.value} - ${allStrangeCounters[i].value}: ${allStrangeCountersNumber[i].value}`
+                    } else{
+                        break
+                    }
+                }
+
             }else{
                 attributeText.innerHTML = `(${allStrangeCounters[i].value}: ${allStrangeCountersNumber[i].value})`
             }
@@ -272,9 +315,7 @@ function generateButtonClicked(){
         cardItemSetBonusText.style.display = "none"
     }
 
-    if (strangeCounterDiv.checked){
 
-    }
 
     window.scrollTo(0,0)
 

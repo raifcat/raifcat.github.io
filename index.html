@@ -83,6 +83,11 @@
             </div>
 
             <div class="config-input-div">
+                <p>Uses an item tag? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="This will remove the strange rank (If it was toggled) and puts speech marks on the item name"></p>
+                <input type="checkbox" class="checkbox-input right-side" id="item-tag-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+            </div>
+
+            <div class="config-input-div">
                 <p>Level <img src="./media/images/info.png" alt="" height="20px" width="20px" title="The level of the weapon"></p>
                 <input type="number" class="input-text-light" id="item-level-input" value="1">
             </div>
@@ -94,7 +99,7 @@
 
             <div class="config-input-div">
                 <p>Quality <img src="./media/images/info.png" alt="" height="20px" width="20px" title="The quality of the weapon and color of the title"></p>
-                <select type="text" class="select-input" id="item-quality-input">
+                <select type="text" class="select-input" id="item-quality-input" onchange="">
                     <option value="0">unique</option>
                     <option value="1">normal</option>
                     <option value="2">strange</option>
@@ -190,10 +195,10 @@
             </div>
 
             <div class="config-input-div">
-                <p>Show strange? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the strange part on the image. However, the strange parts will replace the level"></p>
+                <p>Show strange <br> parts? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the strange part on the image. However, the strange parts will replace the level"></p>
                 
                 <div class="action-button-divs">
-                    <input type="checkbox" class="checkbox-input right-side" id="strange-counters-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                    <input type="checkbox" class="checkbox-input right-side" id="strange-counters-checkbox-input" accept=".jpg, .jpeg, .png, .gif" onclick="rankCheckboxInput.disabled = !strangeCheckboxInput.checked">
 
                     <div class="main-attributes-div" style="margin-left: 10px;">
 
@@ -201,16 +206,33 @@
 
                             <div class="strange-counters-item-div">
                                 <input type="text" class="strange-counters-text-input" value="Kills">
-                                <input type="number" class="strange-counters-number-input margin-left"  value="17">
+                                <input type="number" class="strange-counters-number-input margin-left"  value="175">
+                                
+                            </div>
+                            
+                            <div class="strange-counters-item-div">
+                                <input type="text" class="strange-counters-text-input" value="Medic Kills">
+                                <input type="number" class="strange-counters-number-input margin-left" value="67">
                                 <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode) "><img src="./media/images/delete.png" alt="" height="20px" width="20px" ;></button>
                             </div>
-                        
+
+                            <div class="strange-counters-item-div">
+                                <input type="text" class="strange-counters-text-input" value="Domination Kills">
+                                <input type="number" class="strange-counters-number-input margin-left" value="17">
+                                <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode) "><img src="./media/images/delete.png" alt="" height="20px" width="20px" ;></button>
+                            </div>
+
                         </div>
 
                 
                         <button class="attribute-add-button" onclick="generateNewStrangeCounter()">Add new strange part</button>
                     </div>
                 </div>
+            </div>
+
+            <div class="config-input-div">
+                <p>Show strange rank on name? (Show strange parts has to be toggled) <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the halloween restriction on the image"></p>
+                <input type="checkbox" class="checkbox-input right-side" id="rank-checkbox-input" accept=".jpg, .jpeg, .png, .gif" disabled checked>
             </div>
 
             <div class="config-input-div">
