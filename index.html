@@ -16,6 +16,19 @@
         <div class="item-card-div" id="item-card-div">
             <!--you are a bad person if you remove this-->
             <p class="watermark">Made with raifcat.github.io</p> 
+
+            <div class="item-card-class-div">
+                <img src="./media/images/Scout.png" alt="" id="item-card-scout-img" style="display: none;">
+                <img src="./media/images/Soldier.png" alt="" id="item-card-soldier-img" style="display: none;">
+                <img src="./media/images/Pyro.png" alt="" id="item-card-pyro-img" style="display: none;">
+                <img src="./media/images/Demoman.png" alt="" id="item-card-demoman-img" style="display: none;">
+                <img src="./media/images/Heavy.png" alt="" id="item-card-heavy-img" style="display: none;">
+                <img src="./media/images/Engineer.png" alt="" id="item-card-engie-img" style="display: none;">
+                <img src="./media/images/Medic.png" alt="" id="item-card-medic-img" style="display: none;">
+                <img src="./media/images/Sniper.png" alt="" id="item-card-sniper-img" style="display: none;">
+                <img src="./media/images/Spy.png" alt="" id="item-card-spy-img" style="display: none;">
+            </div>
+
             <div class="item-card-img-div-center">
                 <div class="item-card-img-div">
                     <img src="./media/images/placeholder.png" alt="" id="item-card-img"> 
@@ -98,7 +111,7 @@
             </div>
 
             <div class="config-input-div">
-                <p>Quality <img src="./media/images/info.png" alt="" height="20px" width="20px" title="The quality of the weapon and color of the title"></p>
+                <p>Quality Color <img src="./media/images/info.png" alt="" height="20px" width="20px" title="The quality of the weapon and color of the title"></p>
                 <select type="text" class="select-input" id="item-quality-input" onchange="">
                     <option value="0">unique</option>
                     <option value="1">normal</option>
@@ -272,7 +285,49 @@
                 </div>
             </div>
             
-
+            <div class="config-input-div">
+                <p>Classes that can <br> use this weapon <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the classes that can use this weapon."></p>
+                <div class="class-input-main-div">
+                    <div class="class-input-div">
+                        <img src="./media/images/Scout.png" alt="" width="50px" height="50px">
+                        <input type="checkbox" class="checkbox-input right-side" id="scout-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                    </div>
+                    <div class="class-input-div">
+                        <img src="./media/images/Soldier.png" alt="" width="50px" height="50px">
+                        <input type="checkbox" class="checkbox-input right-side" id="soldier-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                    </div>
+                    <div class="class-input-div">
+                        <img src="./media/images/Pyro.png" alt="" width="50px" height="50px">
+                        <input type="checkbox" class="checkbox-input right-side" id="pyro-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                    </div>
+                    <div class="class-input-div">
+                        <img src="./media/images/Demoman.png" alt="" width="50px" height="50px">
+                        <input type="checkbox" class="checkbox-input right-side" id="demoman-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                    </div>
+                    <div class="class-input-div">
+                        <img src="./media/images/Heavy.png" alt="" width="50px" height="50px">
+                        <input type="checkbox" class="checkbox-input right-side" id="heavy-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                    </div>
+                    <div class="class-input-div">
+                        <img src="./media/images/Engineer.png" alt="" width="50px" height="50px">
+                        <input type="checkbox" class="checkbox-input right-side" id="engie-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                    </div>
+                    <div class="class-input-div">
+                        <img src="./media/images/Medic.png" alt="" width="50px" height="50px">
+                        <input type="checkbox" class="checkbox-input right-side" id="medic-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                    </div>
+                    <div class="class-input-div">
+                        <img src="./media/images/Sniper.png" alt="" width="50px" height="50px">
+                        <input type="checkbox" class="checkbox-input right-side" id="sniper-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                    </div>
+                    <div class="class-input-div">
+                        <img src="./media/images/Spy.png" alt="" width="50px" height="50px">
+                        <input type="checkbox" class="checkbox-input right-side" id="spy-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                    </div>
+                </div>
+                
+                
+            </div>
             
             <div class="config-input-div">
                 <p>Is Unusual? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if the item is unusual or not as well as showing the effect"></p>

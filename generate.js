@@ -42,6 +42,27 @@ const rankCheckboxInput = document.getElementById("rank-checkbox-input")
 
 const itemTagCheckboxInput = document.getElementById("item-tag-checkbox-input")
 
+const scoutCheckboxInput = document.getElementById("scout-checkbox-input")
+const soldierCheckboxInput = document.getElementById("soldier-checkbox-input")
+const pyroCheckboxInput = document.getElementById("pyro-checkbox-input")
+const demomanCheckboxInput = document.getElementById("demoman-checkbox-input")
+const heavyCheckboxInput = document.getElementById("heavy-checkbox-input")
+const engieCheckboxInput = document.getElementById("engie-checkbox-input")
+const medicCheckboxInput = document.getElementById("medic-checkbox-input")
+const sniperCheckboxInput = document.getElementById("sniper-checkbox-input")
+const spyCheckboxInput = document.getElementById("spy-checkbox-input")
+
+const cardItemScoutImg = document.getElementById("item-card-scout-img")
+const cardItemSoldierImg = document.getElementById("item-card-soldier-img")
+const cardItemPyroImg = document.getElementById("item-card-pyro-img")
+const cardItemDemomanImg = document.getElementById("item-card-demoman-img")
+const cardItemHeavyImg = document.getElementById("item-card-heavy-img")
+const cardItemEngieImg = document.getElementById("item-card-engie-img")
+const cardItemMedicImg = document.getElementById("item-card-medic-img")
+const cardItemSniperImg = document.getElementById("item-card-sniper-img")
+const cardItemSpyImg = document.getElementById("item-card-spy-img")
+
+
 const cardItemName = document.getElementById("card-item-name");
 const cardItemLevel = document.getElementById("card-item-level");
 const cardItemImg = document.getElementById("item-card-img");
@@ -315,7 +336,15 @@ function generateButtonClicked(){
         cardItemSetBonusText.style.display = "none"
     }
 
-
+    if (scoutCheckboxInput.checked) { cardItemScoutImg.style.display = "block" } else { cardItemScoutImg.style.display = "none" }
+    if (soldierCheckboxInput.checked) { cardItemSoldierImg.style.display = "block" } else { cardItemSoldierImg.style.display = "none" }
+    if (pyroCheckboxInput.checked) { cardItemPyroImg.style.display = "block" } else { cardItemPyroImg.style.display = "none" }
+    if (demomanCheckboxInput.checked) { cardItemDemomanImg.style.display = "block" } else { cardItemDemomanImg.style.display = "none" }
+    if (heavyCheckboxInput.checked) { cardItemHeavyImg.style.display = "block" } else { cardItemHeavyImg.style.display = "none" }
+    if (engieCheckboxInput.checked) { cardItemEngieImg.style.display = "block" } else { cardItemEngieImg.style.display = "none" }
+    if (medicCheckboxInput.checked) { cardItemMedicImg.style.display = "block" } else { cardItemMedicImg.style.display = "none" }
+    if (sniperCheckboxInput.checked) { cardItemSniperImg.style.display = "block" } else { cardItemSniperImg.style.display = "none" }
+    if (spyCheckboxInput.checked) { cardItemSpyImg.style.display = "block" } else { cardItemSpyImg.style.display = "none" }
 
     window.scrollTo(0,0)
 
