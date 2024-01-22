@@ -139,8 +139,27 @@ function generateButtonClicked(){
     
 
 
+    function imageToBase64(url, callback) {
+        fetch(url)
+            .then((response) => response.blob())
+            .then((blob) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(blob);
+                reader.onloadend = () => {
+                    const base64String = reader.result;
+                    callback(base64String);
+                };
+            });
+    }
+
     if (itemImageInput.files[0]){
-        cardItemImg.src = window.URL.createObjectURL(itemImageInput.files[0])
+        imageToBase64(URL.createObjectURL(itemImageInput.files[0]), function (base64String) {
+            cardItemImg.src = base64String;
+        });
+    } else{
+        imageToBase64(cardItemImg.src, function (base64String) {
+            cardItemImg.src = base64String;
+        });
     }
     
     cardItemName.style.color = qualityColours[itemQualityInput.value]
@@ -557,10 +576,11 @@ function itemSetCheckboxInputOnClick(){
     }
 }
 
+
 function constructJSONFile(){
 
-
     
+
 
     const json = {
         "version": 1,
@@ -578,6 +598,8 @@ function constructJSONFile(){
         "isNotCraftable": craftableCheckboxInput.checked,
         "isAchievment": achievementCheckboxInput.checked,
         "usesItemTag": itemTagCheckboxInput.checked,
+
+        "image": cardItemImg.src,
 
         "isUnusual": unusualCheckboxInput.checked,
         "unusualEffect": unusualTextInput.value,
@@ -628,9 +650,11 @@ function constructJSONFile(){
 
     }
 
+
+
     const element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(json)));
-    element.setAttribute('download', "filename.json");
+    element.setAttribute('download', "itemcard.json");
 
     element.style.display = 'none';
     document.body.appendChild(element);
@@ -649,6 +673,9 @@ function loadJSONFile(){
     jsonFileInput.value = null
 
     function readSuccess(evt) {
+
+        
+
         rawJSON = evt.target.result
         jsonData = JSON.parse(rawJSON);
 
@@ -664,6 +691,8 @@ function loadJSONFile(){
         halloweenCheckboxInput.checked = jsonData["isHalloweenRestricted"]
         pyrolandCheckboxInput.checked = jsonData["isPyrolandRestricted"]
         itemTagCheckboxInput.checked = jsonData["usesItemTag"]
+
+        cardItemImg.src = jsonData["image"]
 
         tradableCheckboxInput.checked = jsonData["isNotTradable"]
 
