@@ -55,6 +55,8 @@ const medicCheckboxInput = document.getElementById("medic-checkbox-input")
 const sniperCheckboxInput = document.getElementById("sniper-checkbox-input")
 const spyCheckboxInput = document.getElementById("spy-checkbox-input")
 
+const jsonFileInput = document.getElementById("json-file-input")
+
 const cardItemScoutImg = document.getElementById("item-card-scout-img")
 const cardItemSoldierImg = document.getElementById("item-card-soldier-img")
 const cardItemPyroImg = document.getElementById("item-card-pyro-img")
@@ -100,13 +102,31 @@ const cardItemStrangeCounterDiv = document.getElementById("strange-counters-list
 
 
 
+
+
 qualityColours = ["#FFD700", "#B2B2B2", "#CF6A32", "#4D7455", "#476291", "#8650AC", "#AA0000", "#38F3AB", "#FAFAFA", "#70B04A", "#A50F79", "#B0C3D9", "#5E98D9", "#4B69FF", "#8847FF", "#D32CE6", "#EB4B4B"];
 
 positiveColour = "rgb(143,190,236)"
 negativeColour = "rgb(255,62,62)"
 neutralColour = "rgb(227,218,195)"
 
+const allStrangeCounters = document.getElementsByClassName('strange-counters-text-input');
+const allStrangeCountersNumber = document.getElementsByClassName('strange-counters-number-input');
 
+var allStrangeCountersTextArray = [];
+var allStrangeCounterNumberArray = []
+
+const allAttributes = document.getElementsByClassName('attributes-text-input');
+const allAttributesTypes = document.getElementsByClassName('attributes-select-input');
+
+var attributesText = [];
+var attributesTextType = []
+
+const allItemSets = document.getElementsByClassName('item-set-text-input');
+const allItemSetsTypes = document.getElementsByClassName('item-set-select-input');
+
+var allItemSetsText = [];
+var allItemSetsTextType = []
 
 function generateButtonClicked(){
 
@@ -126,10 +146,8 @@ function generateButtonClicked(){
     cardItemName.style.color = qualityColours[itemQualityInput.value]
     cardItemLevel.innerHTML = `Level ${itemLevelInput.value} ${itemTypeInput.value}`
 
-    const allAttributes = document.getElementsByClassName('attributes-text-input');
-    const allAttributesTypes = document.getElementsByClassName('attributes-select-input');
-    var attributesText = [];
-    var attributesTextType = []
+    attributesText = []
+    attributesTextType = []
 
     cardAttributesList.innerHTML = ""
 
@@ -196,6 +214,14 @@ function generateButtonClicked(){
         cardItemUnusualIcon.style.display = "none"
     }
 
+    allStrangeCountersTextArray = []
+    allStrangeCounterNumberArray = []
+
+    if (!strangeCheckboxInput.checked) {
+    for (var i = 0; i < allStrangeCounters.length; i++) {
+        allStrangeCountersTextArray.push(allStrangeCounters[i].value);
+        allStrangeCounterNumberArray.push(allStrangeCountersNumber[i].value);
+    }}
 
     if (strangeCheckboxInput.checked) {
         cardItemStrangeIcon.style.display = "block"
@@ -203,15 +229,13 @@ function generateButtonClicked(){
         cardItemStrangeCounterDiv.style.display = "block"
         cardItemStrangeCounterDiv.innerHTML = ""
 
-        const allStrangeCounters = document.getElementsByClassName('strange-counters-text-input');
-        const allStrangeCountersNumber = document.getElementsByClassName('strange-counters-number-input');
         
-        var allStrangeCountersTextArray = [];
-        var allStrangeCounterNumberArray = []
+        allStrangeCountersTextArray = [];
+        allStrangeCounterNumberArray = []
 
 
-        strangeQualities = ["Strange", "Unremarkable", "Scarcely Lethal", "Mildly Menacing", "Somewhat Threatening", "Uncharitable", "Notably Dangerous", "Sufficiently Lethal", "Truly Feared", "Spectacularly Lethal", "Gore-Spattered", "Wicked Nasty", "Positively Inhumane", "Totally Ordinary", "Face-Melting", "Rage-Inducing", "Server-Clearing", "Epic", "Legendary", "Australian", "Hale's Own"]
-        strangeQualityKills = [0, 10, 25, 45, 70, 100, 135, 175, 225, 275, 350, 500, 750, 999, 1000, 1500, 2500, 5000, 7500, 7616, 8500]
+        const strangeQualities = ["Strange", "Unremarkable", "Scarcely Lethal", "Mildly Menacing", "Somewhat Threatening", "Uncharitable", "Notably Dangerous", "Sufficiently Lethal", "Truly Feared", "Spectacularly Lethal", "Gore-Spattered", "Wicked Nasty", "Positively Inhumane", "Totally Ordinary", "Face-Melting", "Rage-Inducing", "Server-Clearing", "Epic", "Legendary", "Australian", "Hale's Own"]
+        const strangeQualityKills = [0, 10, 25, 45, 70, 100, 135, 175, 225, 275, 350, 500, 750, 999, 1000, 1500, 2500, 5000, 7500, 7616, 8500]
 
         if (itemQualityInput.value == "2"){
 
@@ -252,7 +276,7 @@ function generateButtonClicked(){
             attributeText.className = "item-card-text level-color"
 
             cardItemStrangeCounterDiv.appendChild(attributeText)
-        }
+        } 
 
     } else {
         cardItemStrangeIcon.style.display = "none"
@@ -301,13 +325,20 @@ function generateButtonClicked(){
         cardItemCraftedText.style.display = "none"
     }
 
+    allItemSetsText = [];
+    allItemSetsTextType = []
+    if (!itemSetCheckboxInput.checked) {
+    for (var i = 0; i < allItemSets.length; i++) {
+        allItemSetsText.push(allItemSets[i].value);
+        allItemSetsTextType.push(allItemSetsTypes[i].value);
+    }
+    }
+
+
     cardItemSetListDiv.innerHTML = ""
 
     if (itemSetCheckboxInput.checked){
-        const allItemSets = document.getElementsByClassName('item-set-text-input');
-        const allItemSetsTypes = document.getElementsByClassName('item-set-select-input');
-        var allItemSetsText = [];
-        var allItemSetsTextType = []
+        
 
         cardItemSetName.innerHTML = itemSetNameInput.value
         cardItemSetName.style.display = "block"
@@ -328,9 +359,9 @@ function generateButtonClicked(){
 
             document.getElementById("item-set-list-div").appendChild(attributeText)
         }
-    } else{
-        cardItemSetName.style.display = "none"
-    }
+        } else{
+            cardItemSetName.style.display = "none"
+        }
 
     if (itemSetBonusCheckboxInput.checked && !itemSetBonusCheckboxInput.disabled && itemSetCheckboxInput.checked){
         cardItemSetBonus.style.display = "block"
@@ -358,10 +389,16 @@ function generateButtonClicked(){
         cardItemCreditText.style.display = "none"
     }
 
-    window.scrollTo(0,0)
+
 
 
 }
+
+
+
+// Set up the loop with setInterval
+setInterval(generateButtonClicked, 2000);              
+
 
 function generateNewAttribute(){
 
@@ -518,4 +555,323 @@ function itemSetCheckboxInputOnClick(){
     } else if (!itemSetBonusCheckboxInput.disabled && itemSetBonusCheckboxInput.checked){
         itemSetBonusTextInput.disabled = false;
     }
+}
+
+function constructJSONFile(){
+
+
+    
+
+    const json = {
+        "version": 1,
+
+        "name": itemNameInput.value,
+        "level": itemLevelInput.value,
+        "type": itemTypeInput.value,
+        "quality": itemQualityInput.value,
+        "isLimitedEdition": limitedEditionCheckBoxInput.checked,
+        "isFestivied": festivizedCheckboxInput.checked,
+        "showRankOnName": rankCheckboxInput.checked,
+        "isHalloweenRestricted": halloweenCheckboxInput.checked,
+        "isPyrolandRestricted": pyrolandCheckboxInput.checked,
+        "isNotTradable": tradableCheckboxInput.checked,
+        "isNotCraftable": craftableCheckboxInput.checked,
+        "isAchievment": achievementCheckboxInput.checked,
+        "usesItemTag": itemTagCheckboxInput.checked,
+
+        "isUnusual": unusualCheckboxInput.checked,
+        "unusualEffect": unusualTextInput.value,
+
+        "isGift": giftCheckboxInput.checked,
+        "giftText": giftTextInput.value,
+        "giftDate": giftDateInput.value,
+
+        "isCrafted": craftedCheckboxInput.checked,
+        "craftedText": craftedTextInput.value,
+
+        "limitedUse": limitedCheckboxInput.checked,
+        "limitedUseNumber": limitedTextInput.value,
+
+        "itemSetEnabled": itemSetCheckboxInput.checked,
+        "itemSetName": itemSetNameInput.value,
+        "itemSetsText": allItemSetsText,
+        "itemSetsType": allItemSetsTextType,
+
+        "itemSetBonusEnabled": itemSetBonusCheckboxInput.checked,
+        "itemSetBonusText": itemSetBonusTextInput.value,
+
+        "creditEnabled": creditCheckboxInput.checked,
+        "creditText": creditTextInput.value,
+
+        "classesCanUse": {
+            "scout": scoutCheckboxInput.checked,
+            "soldier": soldierCheckboxInput.checked,
+            "pyro": pyroCheckboxInput.checked,
+            "demoman": demomanCheckboxInput.checked,
+            "heavy": heavyCheckboxInput.checked,
+            "engie": engieCheckboxInput.checked,
+            "medic": medicCheckboxInput.checked,
+            "sniper": sniperCheckboxInput.checked,
+            "spy": spyCheckboxInput.checked,
+
+        },
+
+        "limitedAmountActive": limitedCheckboxInput.checked,
+        "limitedAmount": limitedTextInput.value,
+
+        "attributesText": attributesText,
+        "attributesType": attributesTextType,
+
+        "showStrangeParts": strangeCheckboxInput.checked,
+        "strangePartsText": allStrangeCountersTextArray,
+        "strangePartsNumber": allStrangeCounterNumberArray
+
+    }
+
+    const element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(json)));
+    element.setAttribute('download', "filename.json");
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+
+
+
+function loadJSONFile(){
+    var reader = new FileReader();
+    reader.onload = readSuccess;
+    reader.readAsText(jsonFileInput.files[0]);
+    jsonFileInput.value = null
+
+    function readSuccess(evt) {
+        rawJSON = evt.target.result
+        jsonData = JSON.parse(rawJSON);
+
+        console.log(jsonData)
+
+        itemNameInput.value = jsonData["name"]
+        itemLevelInput.value = jsonData["level"]
+        itemTypeInput.value = jsonData["type"]
+        itemQualityInput.value = jsonData["quality"]
+        limitedEditionCheckBoxInput.checked = jsonData["isLimitedEdition"]
+        festivizedCheckboxInput.checked = jsonData["isFestivized"]
+        rankCheckboxInput.checked = jsonData["showRankOnName"]
+        halloweenCheckboxInput.checked = jsonData["isHalloweenRestricted"]
+        pyrolandCheckboxInput.checked = jsonData["isPyrolandRestricted"]
+        itemTagCheckboxInput.checked = jsonData["usesItemTag"]
+
+        tradableCheckboxInput.checked = jsonData["isNotTradable"]
+
+        if (jsonData["isNotTradable"]){
+            craftableCheckboxInput.disabled = true
+            achievementCheckboxInput.disabled = false
+        } else{
+            craftableCheckboxInput.disabled = false
+            achievementCheckboxInput.disabled = true
+        }
+
+        craftableCheckboxInput.checked = jsonData["isNotCraftable"]
+
+        if (jsonData["isNotCraftable"]) {
+            tradableCheckboxInput.disabled = true
+            achievementCheckboxInput.disabled = true
+        } else{
+            tradableCheckboxInput.disabled = false
+            achievementCheckboxInput.disabled = false
+        }
+
+        achievementCheckboxInput.checked = jsonData["isAchievment"]
+
+        unusualCheckboxInput.checked = jsonData["isUnusual"]
+        unusualTextInput.disabled = !jsonData["isUnusual"]
+        unusualTextInput.value = jsonData["unusualEffect"]
+        giftCheckboxInput.checked = jsonData["isGift"]
+
+        giftTextInput.disabled = !jsonData["isGift"]
+        giftDateInput.disabled = !jsonData["isGift"]
+
+        giftTextInput.value = jsonData["giftText"]
+        giftDateInput.value = jsonData["giftDate"]
+
+        craftedCheckboxInput.checked = jsonData["isCrafted"]
+
+        craftedTextInput.disabled = !jsonData["isCrafted"]
+            
+        craftedTextInput.value = jsonData["craftedText"]
+        limitedCheckboxInput.checked = jsonData["limitedUse"]
+        limitedTextInput.disabled = !jsonData["limitedUse"]
+        limitedTextInput.value = jsonData["limitedUseNumber"]
+        itemSetCheckboxInput.checked = jsonData["itemSetEnabled"]
+
+        itemSetNameInput.disabled = !jsonData["itemSetEnabled"];
+        itemSetBonusCheckboxInput.disabled = !jsonData["itemSetEnabled"];
+        
+        itemSetNameInput.value = jsonData["itemSetName"]
+
+        itemSetBonusCheckboxInput.checked = jsonData["itemSetBonusEnabled"]
+
+        itemSetBonusTextInput.disabled = !jsonData["itemSetBonusEnabled"]
+
+        itemSetBonusTextInput.value = jsonData["itemSetBonusText"]
+
+        scoutCheckboxInput.checked = jsonData["classesCanUse"]["scout"]
+        soldierCheckboxInput.checked = jsonData["classesCanUse"]["soldier"]
+        pyroCheckboxInput.checked = jsonData["classesCanUse"]["pyro"]
+        demomanCheckboxInput.checked = jsonData["classesCanUse"]["demoman"]
+        heavyCheckboxInput.checked = jsonData["classesCanUse"]["heavy"]
+        engieCheckboxInput.checked = jsonData["classesCanUse"]["engie"]
+        medicCheckboxInput.checked = jsonData["classesCanUse"]["medic"]
+        sniperCheckboxInput.checked = jsonData["classesCanUse"]["sniper"]
+        spyCheckboxInput.checked = jsonData["classesCanUse"]["spy"]
+
+        creditCheckboxInput.checked = jsonData["creditEnabled"]
+        creditTextInput.disabled = !jsonData["creditEnabled"]
+        creditTextInput.value = jsonData["creditText"]
+
+        strangeCheckboxInput.checked = jsonData["showStrangeParts"]
+        rankCheckboxInput.disabled = !jsonData["showStrangeParts"]
+
+        document.getElementById("item-set-div").innerHTML = ""
+
+        for (var i = 0; i < jsonData["itemSetsText"].length; i++){
+            const attributeDiv = document.createElement("div");
+            attributeDiv.className = "item-set-item-div"
+
+            const inputDiv = document.createElement("input")
+            inputDiv.className = "item-set-text-input"
+            attributeDiv.appendChild(inputDiv)
+
+            inputDiv.value = jsonData["itemSetsText"][i]
+
+            const selectDiv = document.createElement("select");
+            selectDiv.className = "item-set-select-input"
+            attributeDiv.appendChild(selectDiv)
+
+            const positiveOption = document.createElement("option");
+            positiveOption.innerHTML = "Incomplete"
+            positiveOption.value = "incomplete"
+            selectDiv.appendChild(positiveOption)
+
+            const negativeOption = document.createElement("option");
+            negativeOption.innerHTML = "Complete"
+            negativeOption.value = "complete"
+            selectDiv.appendChild(negativeOption)
+
+            selectDiv.value = jsonData["itemSetsType"][i]
+
+            const deleteButton = document.createElement("button");
+            deleteButton.className = "attributes-delete-button"
+            deleteButton.onclick = function () { this.parentNode.parentNode.removeChild(this.parentNode) }
+            attributeDiv.appendChild(deleteButton)
+
+
+            const buttonImage = document.createElement("img")
+            buttonImage.src = "./media/images/delete.png"
+            buttonImage.height = 20
+            buttonImage.width = 20
+            deleteButton.appendChild(buttonImage)
+
+            document.getElementById("item-set-div").appendChild(attributeDiv)
+        }
+    
+        attributesDiv.innerHTML = ""
+    
+        for (var i = 0; i < jsonData["attributesText"].length; i++){
+            const attributeDiv = document.createElement("div");
+            attributeDiv.className = "attributes-item-div"
+
+            const inputDiv = document.createElement("input")
+            inputDiv.className = "attributes-text-input"
+            attributeDiv.appendChild(inputDiv)
+
+            inputDiv.value = jsonData["attributesText"][i]
+
+            const selectDiv = document.createElement("select");
+            selectDiv.className = "attributes-select-input"
+            attributeDiv.appendChild(selectDiv)
+
+            const positiveOption = document.createElement("option");
+            positiveOption.innerHTML = "Positive"
+            positiveOption.value = "positive"
+            selectDiv.appendChild(positiveOption)
+
+            const negativeOption = document.createElement("option");
+            negativeOption.innerHTML = "Negative"
+            negativeOption.value = "negative"
+            selectDiv.appendChild(negativeOption)
+
+            const neutralOption = document.createElement("option");
+            neutralOption.innerHTML = "Neutral"
+            neutralOption.value = "neutral"
+            selectDiv.appendChild(neutralOption)
+
+            selectDiv.value = jsonData["attributesType"][i]
+
+            const deleteButton = document.createElement("button");
+            deleteButton.className = "attributes-delete-button"
+            deleteButton.onclick = function () { this.parentNode.parentNode.removeChild(this.parentNode) }
+            attributeDiv.appendChild(deleteButton)
+
+
+            const buttonImage = document.createElement("img")
+            buttonImage.src = "./media/images/delete.png"
+            buttonImage.height = 20
+            buttonImage.width = 20
+            deleteButton.appendChild(buttonImage)
+
+            attributesDiv.appendChild(attributeDiv)
+        }
+
+        document.getElementById("strange-counters-div").innerHTML = ""
+
+        for (var i = 0; i < jsonData["strangePartsText"].length; i++){
+
+            const attributeDiv = document.createElement("div");
+            attributeDiv.className = "strange-counters-item-div"
+
+            const inputDiv = document.createElement("input")
+            inputDiv.className = "strange-counters-text-input"
+            attributeDiv.appendChild(inputDiv)
+
+            inputDiv.value = jsonData["strangePartsText"][i]
+
+            const selectDiv = document.createElement("input");
+            selectDiv.type = "number"
+            selectDiv.className = "strange-counters-number-input margin-left"
+            selectDiv.style = "width: 200px;"
+            attributeDiv.appendChild(selectDiv)
+
+            selectDiv.value = jsonData["strangePartsNumber"][i]
+
+            if (!i == 0){
+                const deleteButton = document.createElement("button");
+                deleteButton.className = "attributes-delete-button"
+                deleteButton.onclick = function () { this.parentNode.parentNode.removeChild(this.parentNode) }
+                attributeDiv.appendChild(deleteButton)
+
+                const buttonImage = document.createElement("img")
+                buttonImage.src = "./media/images/delete.png"
+                buttonImage.height = 20
+                buttonImage.width = 20
+                deleteButton.appendChild(buttonImage)
+            }
+
+            
+
+
+            
+
+            document.getElementById("strange-counters-div").appendChild(attributeDiv)
+
+        }
+        
+    };
+    
+
+    
 }

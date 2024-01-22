@@ -425,14 +425,21 @@
             </div>
             
             <div class="action-button-divs">
+                <!--
                 <button class="input-button" id="generate-button" onclick="generateButtonClicked()">
                     Generate
-                </button>
-                <button class="input-button" id="generate-button" onclick="takeScreenshot()" style="margin-left: 10px;">
+                </button>-->
+                <button class="input-button" id="generate-button" onclick="takeScreenshot()" onclick="generateButtonClicked()">
                     Download .png
                 </button>
                 <button class="input-button" id="generate-button" onclick="takeScreenshotAndCopy()" style="margin-left: 10px;">
                     Copy .png
+                </button>
+                <button class="input-button" id="generate-button" onclick="constructJSONFile()" style="margin-left: 10px;">
+                    Save .json
+                </button>
+                <button class="input-button" id="generate-button" onclick="jsonFileInput.click()" style="margin-left: 10px;">
+                    Load .json
                 </button>
             </div>
 
@@ -441,6 +448,8 @@
         
 
     </div>
+
+    <input type="file" name="" accept=".json" id="json-file-input" style="display: none;" onchange="loadJSONFile()">
 
     <script src="generate.js"></script>
 </body>
