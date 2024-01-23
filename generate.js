@@ -57,6 +57,8 @@ const spyCheckboxInput = document.getElementById("spy-checkbox-input")
 
 const jsonFileInput = document.getElementById("json-file-input")
 
+const loadItemInput = document.getElementById("load-item-input")
+
 const cardItemScoutImg = document.getElementById("item-card-scout-img")
 const cardItemSoldierImg = document.getElementById("item-card-soldier-img")
 const cardItemPyroImg = document.getElementById("item-card-pyro-img")
@@ -427,10 +429,12 @@ function generateNewAttribute(){
     const inputDiv = document.createElement("input")
     inputDiv.className = "attributes-text-input"
     attributeDiv.appendChild(inputDiv)
+    inputDiv.onkeydown = function () { generateButtonClicked() }
 
     const selectDiv = document.createElement("select");
     selectDiv.className = "attributes-select-input"
     attributeDiv.appendChild(selectDiv)
+    selectDiv.onchange = function () { generateButtonClicked() }
 
     const positiveOption = document.createElement("option");
     positiveOption.innerHTML = "Positive"
@@ -449,7 +453,7 @@ function generateNewAttribute(){
 
     const deleteButton = document.createElement("button");
     deleteButton.className = "attributes-delete-button"
-    deleteButton.onclick = function () {this.parentNode.parentNode.removeChild(this.parentNode)}
+    deleteButton.onclick = function () { this.parentNode.parentNode.removeChild(this.parentNode); generateButtonClicked() }
     attributeDiv.appendChild(deleteButton)
 
 
@@ -469,10 +473,12 @@ function generateNewItemSetMember(){
     const inputDiv = document.createElement("input")
     inputDiv.className = "item-set-text-input"
     attributeDiv.appendChild(inputDiv)
+    inputDiv.onkeydown = function () { generateButtonClicked() }
 
     const selectDiv = document.createElement("select");
     selectDiv.className = "item-set-select-input"
     attributeDiv.appendChild(selectDiv)
+    inputDiv.onchange = function () { generateButtonClicked() }
 
     const positiveOption = document.createElement("option");
     positiveOption.innerHTML = "Incomplete"
@@ -487,8 +493,9 @@ function generateNewItemSetMember(){
 
     const deleteButton = document.createElement("button");
     deleteButton.className = "attributes-delete-button"
-    deleteButton.onclick = function () { this.parentNode.parentNode.removeChild(this.parentNode) }
+    deleteButton.onclick = function () { this.parentNode.parentNode.removeChild(this.parentNode); generateButtonClicked() }
     attributeDiv.appendChild(deleteButton)
+
 
 
     const buttonImage = document.createElement("img")
@@ -508,15 +515,19 @@ function generateNewStrangeCounter(){
     inputDiv.className = "strange-counters-text-input"
     attributeDiv.appendChild(inputDiv)
 
+    inputDiv.onkeydown = function () { generateButtonClicked() }
+
     const selectDiv = document.createElement("input");
     selectDiv.type = "number"
     selectDiv.className = "strange-counters-number-input margin-left"
     selectDiv.style = "width: 200px;"
     attributeDiv.appendChild(selectDiv)
 
+    selectDiv.onkeydown = function () {generateButtonClicked()}
+
     const deleteButton = document.createElement("button");
     deleteButton.className = "attributes-delete-button"
-    deleteButton.onclick = function () { this.parentNode.parentNode.removeChild(this.parentNode) }
+    deleteButton.onclick = function () { this.parentNode.parentNode.removeChild(this.parentNode); generateButtonClicked() }
     attributeDiv.appendChild(deleteButton)
 
 
@@ -673,11 +684,16 @@ function loadJSONFile(){
     jsonFileInput.value = null
 
     function readSuccess(evt) {
-
-        
-
         rawJSON = evt.target.result
         jsonData = JSON.parse(rawJSON);
+        jsonAssignValues(jsonData)
+
+    };
+
+}
+
+function jsonAssignValues(jsonData){
+   
 
         console.log(jsonData)
 
@@ -898,9 +914,23 @@ function loadJSONFile(){
             document.getElementById("strange-counters-div").appendChild(attributeDiv)
 
         }
-        
-    };
-    
+}
 
-    
+function readTextFile(file) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function () {
+        if (rawFile.readyState === 4) {
+            if (rawFile.status === 200 || rawFile.status == 0) {
+                var allText = JSON.parse(rawFile.responseText);
+                jsonAssignValues(allText)
+                generateButtonClicked()
+            }
+        }
+    }
+    rawFile.send(null);
+}
+
+function loadItemFunction(){
+    readTextFile(`./weaponcards/${loadItemInput.value}.json`)
 }

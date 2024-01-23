@@ -94,27 +94,29 @@
 
             <div class="config-input-div">
                 <p>Name <img src="./media/images/info.png" alt="" height="20px" width="20px" title="The name of the weapon"></p>
-                <input type="text" class="input-text" id="item-name-input" value="Conniver's Kunai">
+                <input type="text" class="input-text" id="item-name-input" value="Conniver's Kunai" onkeydown="generateButtonClicked()">
             </div>
 
             <div class="config-input-div">
                 <p>Uses an item tag? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="This will remove the strange rank (If it was toggled) and puts speech marks on the item name"></p>
-                <input type="checkbox" class="checkbox-input right-side" id="item-tag-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                <input type="checkbox" class="checkbox-input right-side" id="item-tag-checkbox-input" accept=".jpg, .jpeg, .png, .gif" onchange="generateButtonClicked()">
             </div>
 
             <div class="config-input-div">
                 <p>Level <img src="./media/images/info.png" alt="" height="20px" width="20px" title="The level of the weapon"></p>
-                <input type="number" class="input-text-light" id="item-level-input" value="1">
+                <input type="number" class="input-text-light" id="item-level-input" value="1" onkeydown="generateButtonClicked()">
+                
             </div>
+            
             
             <div class="config-input-div">
                 <p>Type <img src="./media/images/info.png" alt="" height="20px" width="20px" title="The type of the weapon used alongside with the level (e.g 'Level 1 Knife')"></p>
-                <input type="text" class="input-text-light" id="item-type-input" value="Knife">
+                <input type="text" class="input-text-light" id="item-type-input" value="Knife" onkeydown="generateButtonClicked()">
             </div>
 
             <div class="config-input-div">
                 <p>Quality Color <img src="./media/images/info.png" alt="" height="20px" width="20px" title="The quality of the weapon and color of the title"></p>
-                <select type="text" class="select-input" id="item-quality-input" onchange="">
+                <select type="text" class="select-input" id="item-quality-input" onchange="generateButtonClicked()">
                     <option value="0">unique</option>
                     <option value="1">normal</option>
                     <option value="2">strange</option>
@@ -137,8 +139,10 @@
 
             <div class="config-input-div">
                 <p>Image <img src="./media/images/info.png" alt="" height="20px" width="20px" title="The image used on the item card"></p>
-                <input type="file" class="file-input" id="item-image-input" accept=".jpg, .jpeg, .png, .gif">
+                <input type="file" class="file-input" id="item-image-input" accept=".jpg, .jpeg, .png, .gif" onchange="generateButtonClicked()">
+                <p class="disclaimer-p">You can put a .png, jpeg or a gif (gif will trimmed)</p>
             </div>
+            
 
             <div class="config-input-div">
                 <p>Attributes <img src="./media/images/info.png" alt="" height="20px" width="20px" title="The pros and cons of the weapon (e.g '-55 max health on wearer')"></p>
@@ -147,56 +151,56 @@
                     <div class="attributes-div" id="attributes-div">
 
                         <div class="attributes-item-div">
-                            <input type="text" class="attributes-text-input" value="On Backstab: Absorbs the health from your victim">
-                            <select name="" id="" class="attributes-select-input">
+                            <input type="text" class="attributes-text-input" value="On Backstab: Absorbs the health from your victim" onkeydown="generateButtonClicked()">
+                            <select name="" id="" class="attributes-select-input" onchange="generateButtonClicked()">
                                 <option value="positive">Positive</option>
                                 <option value="negative">Negative</option>
                                 <option value="neutral">Neutral</option>
                             </select>
-                            <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode) "><img src="./media/images/delete.png" alt="" height="20px" width="20px" ;></button>
+                            <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode); generateButtonClicked() "><img src="./media/images/delete.png" alt="" height="20px" width="20px" ;></button>
                         </div>
 
                         <div class="attributes-item-div">
-                            <input type="text" class="attributes-text-input" value="-55 max health on wearer">
-                            <select name="" id="" class="attributes-select-input">
+                            <input type="text" class="attributes-text-input" value="-55 max health on wearer" onkeydown="generateButtonClicked()">
+                            <select name="" id="" class="attributes-select-input" onchange="generateButtonClicked()">
                                 <option value="negative">Negative</option>
                                 <option value="positive">Positive</option>
                                 <option value="neutral">Neutral</option>
                             </select>
-                            <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode) "><img
+                            <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode); generateButtonClicked() "><img
                                     src="./media/images/delete.png" alt="" height="20px" width="20px" ;></button>
                         </div>
 
                         <div class="attributes-item-div">
-                            <input type="text" class="attributes-text-input" value="Start off with low health">
-                            <select name="" id="" class="attributes-select-input">
+                            <input type="text" class="attributes-text-input" value="Start off with low health" onkeydown="generateButtonClicked()">
+                            <select name="" id="" class="attributes-select-input" onchange="generateButtonClicked()">
                                 <option value="neutral">Neutral</option>
                                 <option value="positive">Positive</option>
                                 <option value="negative">Negative</option>
                             </select>
-                            <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode) "><img
+                            <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode); generateButtonClicked() "><img
                                     src="./media/images/delete.png" alt="" height="20px" width="20px" ;></button>
                         </div>
 
                         <div class="attributes-item-div">
-                            <input type="text" class="attributes-text-input" value="Kill somebody with this knife">
-                            <select name="" id="" class="attributes-select-input">
+                            <input type="text" class="attributes-text-input" value="Kill somebody with this knife" onkeydown="generateButtonClicked()">
+                            <select name="" id="" class="attributes-select-input" onchange="generateButtonClicked()">
                                 <option value="neutral">Neutral</option>
                                 <option value="positive">Positive</option>
                                 <option value="negative">Negative</option>
                             </select>
-                            <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode) "><img
+                            <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode); generateButtonClicked() "><img
                                     src="./media/images/delete.png" alt="" height="20px" width="20px" ;></button>
                         </div>
 
                         <div class="attributes-item-div">
-                            <input type="text" class="attributes-text-input" value="Steal all of their health">
-                            <select name="" id="" class="attributes-select-input">
+                            <input type="text" class="attributes-text-input" value="Steal all of their health" onkeydown="generateButtonClicked()">
+                            <select name="" id="" class="attributes-select-input" onchange="generateButtonClicked()">
                                 <option value="neutral">Neutral</option>
                                 <option value="positive">Positive</option>
                                 <option value="negative">Negative</option>
                             </select>
-                            <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode) "><img
+                            <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode); generateButtonClicked() "><img
                                     src="./media/images/delete.png" alt="" height="20px" width="20px" ;></button>
                         </div>
 
@@ -204,7 +208,7 @@
                     
                     </div>
                 
-                    <button class="attribute-add-button" onclick="generateNewAttribute()">Add new attribute</button>
+                    <button class="attribute-add-button" onclick="generateNewAttribute(); generateButtonClicked()">Add new attribute</button>
                 </div>
                 
             </div>
@@ -220,21 +224,21 @@
                         <div class="strange-counters-div" id="strange-counters-div">
 
                             <div class="strange-counters-item-div">
-                                <input type="text" class="strange-counters-text-input" value="Kills">
-                                <input type="number" class="strange-counters-number-input margin-left"  value="175">
+                                <input type="text" class="strange-counters-text-input" value="Kills" onkeydown="generateButtonClicked()">
+                                <input type="number" class="strange-counters-number-input margin-left"  value="175" onkeydown="generateButtonClicked()">
                                 
                             </div>
                             
                             <div class="strange-counters-item-div">
-                                <input type="text" class="strange-counters-text-input" value="Medic Kills">
-                                <input type="number" class="strange-counters-number-input margin-left" value="67">
-                                <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode) "><img src="./media/images/delete.png" alt="" height="20px" width="20px" ;></button>
+                                <input type="text" class="strange-counters-text-input" value="Medic Kills" onkeydown="generateButtonClicked()">
+                                <input type="number" class="strange-counters-number-input margin-left" value="67" onkeydown="generateButtonClicked()">
+                                <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode); generateButtonClicked() "><img src="./media/images/delete.png" alt="" height="20px" width="20px" ;></button>
                             </div>
 
                             <div class="strange-counters-item-div">
-                                <input type="text" class="strange-counters-text-input" value="Domination Kills">
-                                <input type="number" class="strange-counters-number-input margin-left" value="17">
-                                <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode) "><img src="./media/images/delete.png" alt="" height="20px" width="20px" ;></button>
+                                <input type="text" class="strange-counters-text-input" value="Domination Kills" onkeydown="generateButtonClicked()">
+                                <input type="number" class="strange-counters-number-input margin-left" value="17" onkeydown="generateButtonClicked()">
+                                <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode); generateButtonClicked() "><img src="./media/images/delete.png" alt="" height="20px" width="20px" ;></button>
                             </div>
 
                         </div>
@@ -247,43 +251,43 @@
 
             <div class="config-input-div">
                 <p>Show strange rank on name? (Show strange parts has to be toggled) <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the halloween restriction on the image"></p>
-                <input type="checkbox" class="checkbox-input right-side" id="rank-checkbox-input" accept=".jpg, .jpeg, .png, .gif" disabled checked>
+                <input type="checkbox" class="checkbox-input right-side" id="rank-checkbox-input" onclick="generateButtonClicked()" disabled checked>
             </div>
 
             <div class="config-input-div">
                 <p>Is halloween restricted? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the halloween restriction on the image"></p>
-                <input type="checkbox" class="checkbox-input right-side" id="halloween-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                <input type="checkbox" class="checkbox-input right-side" id="halloween-checkbox-input" onclick="generateButtonClicked()">
             </div>
 
             <div class="config-input-div">
                 <p>Is only visible in pyroland? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the pyroland restriction on the image"></p>
-                <input type="checkbox" class="checkbox-input right-side" id="pyroland-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                <input type="checkbox" class="checkbox-input right-side" id="pyroland-checkbox-input" onclick="generateButtonClicked()">
             </div>
 
             <div class="config-input-div">
                 <p>Is festivized? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if it's festivized or not"></p>
-                <input type="checkbox" class="checkbox-input right-side" id="festivized-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                <input type="checkbox" class="checkbox-input right-side" id="festivized-checkbox-input" onclick="generateButtonClicked()">
             </div>
 
             <div class="config-input-div">
                 <p>Is limited edition? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if it's limited edition or not"></p>
-                <input type="checkbox" class="checkbox-input right-side" id="edition-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                <input type="checkbox" class="checkbox-input right-side" id="edition-checkbox-input" onclick="generateButtonClicked()">
             </div>
 
             <div class="config-input-set-div">
                 <div class="config-input-div">
                     <p>Isn't marketable or tradable? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if the item is tradable or marketable"></p>
-                    <input type="checkbox" class="checkbox-input right-side" id="tradable-checkbox-input" onclick="achievementCheckboxInput.disabled = !tradableCheckboxInput.checked; craftableCheckboxInput.disabled = tradableCheckboxInput.checked" accept=".jpg, .jpeg, .png, .gif">
+                    <input type="checkbox" class="checkbox-input right-side" id="tradable-checkbox-input" onclick="achievementCheckboxInput.disabled = !tradableCheckboxInput.checked; craftableCheckboxInput.disabled = tradableCheckboxInput.checked; generateButtonClicked()">
                 </div>
 
                 <div class="config-input-div">
                     <p>Isn't usable in crafting? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if the item is usable in crafting"></p>
-                    <input type="checkbox" class="checkbox-input right-side" id="crafting-checkbox-input" onclick="tradableCheckboxInput.disabled = craftableCheckboxInput.checked" accept=".jpg, .jpeg, .png, .gif">
+                    <input type="checkbox" class="checkbox-input right-side" id="crafting-checkbox-input" onclick="tradableCheckboxInput.disabled = craftableCheckboxInput.checked; generateButtonClicked()" >
                 </div>
 
                 <div class="config-input-div">
                     <p>Is an achievement item? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if the item is an achievment item"></p>
-                    <input type="checkbox" class="checkbox-input right-side" id="achievement-checkbox-input" accept=".jpg, .jpeg, .png, .gif" disabled>
+                    <input type="checkbox" class="checkbox-input right-side" id="achievement-checkbox-input" onclick="generateButtonClicked()" disabled>
                 </div>
             </div>
             
@@ -292,39 +296,39 @@
                 <div class="class-input-main-div">
                     <div class="class-input-div">
                         <img src="./media/images/Scout.png" alt="" width="50px" height="50px">
-                        <input type="checkbox" class="checkbox-input right-side" id="scout-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                        <input type="checkbox" class="checkbox-input right-side" id="scout-checkbox-input" onclick="generateButtonClicked()" accept=".jpg, .jpeg, .png, .gif">
                     </div>
                     <div class="class-input-div">
                         <img src="./media/images/Soldier.png" alt="" width="50px" height="50px">
-                        <input type="checkbox" class="checkbox-input right-side" id="soldier-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                        <input type="checkbox" class="checkbox-input right-side" id="soldier-checkbox-input" onclick="generateButtonClicked()" accept=".jpg, .jpeg, .png, .gif">
                     </div>
                     <div class="class-input-div">
                         <img src="./media/images/Pyro.png" alt="" width="50px" height="50px">
-                        <input type="checkbox" class="checkbox-input right-side" id="pyro-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                        <input type="checkbox" class="checkbox-input right-side" id="pyro-checkbox-input" onclick="generateButtonClicked()" accept=".jpg, .jpeg, .png, .gif">
                     </div>
                     <div class="class-input-div">
                         <img src="./media/images/Demoman.png" alt="" width="50px" height="50px">
-                        <input type="checkbox" class="checkbox-input right-side" id="demoman-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                        <input type="checkbox" class="checkbox-input right-side" id="demoman-checkbox-input" onclick="generateButtonClicked()" accept=".jpg, .jpeg, .png, .gif">
                     </div>
                     <div class="class-input-div">
                         <img src="./media/images/Heavy.png" alt="" width="50px" height="50px">
-                        <input type="checkbox" class="checkbox-input right-side" id="heavy-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                        <input type="checkbox" class="checkbox-input right-side" id="heavy-checkbox-input" onclick="generateButtonClicked()" accept=".jpg, .jpeg, .png, .gif">
                     </div>
                     <div class="class-input-div">
                         <img src="./media/images/Engineer.png" alt="" width="50px" height="50px">
-                        <input type="checkbox" class="checkbox-input right-side" id="engie-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                        <input type="checkbox" class="checkbox-input right-side" id="engie-checkbox-input" onclick="generateButtonClicked()" accept=".jpg, .jpeg, .png, .gif">
                     </div>
                     <div class="class-input-div">
                         <img src="./media/images/Medic.png" alt="" width="50px" height="50px">
-                        <input type="checkbox" class="checkbox-input right-side" id="medic-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                        <input type="checkbox" class="checkbox-input right-side" id="medic-checkbox-input" onclick="generateButtonClicked()" accept=".jpg, .jpeg, .png, .gif">
                     </div>
                     <div class="class-input-div">
                         <img src="./media/images/Sniper.png" alt="" width="50px" height="50px">
-                        <input type="checkbox" class="checkbox-input right-side" id="sniper-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                        <input type="checkbox" class="checkbox-input right-side" id="sniper-checkbox-input" onclick="generateButtonClicked()" accept=".jpg, .jpeg, .png, .gif">
                     </div>
                     <div class="class-input-div">
                         <img src="./media/images/Spy.png" alt="" width="50px" height="50px">
-                        <input type="checkbox" class="checkbox-input right-side" id="spy-checkbox-input" accept=".jpg, .jpeg, .png, .gif">
+                        <input type="checkbox" class="checkbox-input right-side" id="spy-checkbox-input" onclick="generateButtonClicked()" accept=".jpg, .jpeg, .png, .gif">
                     </div>
                 </div>
                 
@@ -334,33 +338,33 @@
             <div class="config-input-div">
                 <p>Is Unusual? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if the item is unusual or not as well as showing the effect"></p>
                 <div class="action-button-divs">
-                    <input type="checkbox" class="checkbox-input" id="unusual-checkbox-input" onclick="unusualTextInput.disabled = !unusualCheckboxInput.checked" accept=".jpg, .jpeg, .png, .gif">
-                    <input type="text" class="input-text-light in-flexbox" id="unusual-name-input" disabled value="Burning Flames">
+                    <input type="checkbox" class="checkbox-input" id="unusual-checkbox-input" onclick="unusualTextInput.disabled = !unusualCheckboxInput.checked; generateButtonClicked()">
+                    <input type="text" class="input-text-light in-flexbox" id="unusual-name-input" disabled value="Burning Flames" onkeydown="generateButtonClicked()">
                 </div>
             </div>
 
             <div class="config-input-div">
                 <p>Limited use? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Tells if the item has a limited use amount"></p>
                 <div class="action-button-divs">
-                    <input type="checkbox" class="checkbox-input" id="limited-checkbox-input" onclick="limitedTextInput.disabled = !limitedCheckboxInput.checked" accept=".jpg, .jpeg, .png, .gif">
-                    <input type="number" class="input-text-light in-flexbox" id="limited-amount-input" disabled value="5">
+                    <input type="checkbox" class="checkbox-input" id="limited-checkbox-input" onclick="limitedTextInput.disabled = !limitedCheckboxInput.checked; generateButtonClicked()">
+                    <input type="number" class="input-text-light in-flexbox" id="limited-amount-input" disabled value="5" onkeydown="generateButtonClicked()">
                 </div>
             </div>
 
             <div class="config-input-div">
                 <p>Is a gift? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Tells if the item was a gift or not"></p>
                 <div class="action-button-divs">
-                    <input type="checkbox" class="checkbox-input" id="gift-checkbox-input" onclick="giftTextInput.disabled = !giftCheckboxInput.checked; giftDateInput.disabled = !giftCheckboxInput.checked" accept=".jpg, .jpeg, .png, .gif">
-                    <input type="text" class="input-text-light in-flexbox" id="gift-text-input" disabled value="Scout from tea for 2">
-                    <input type="datetime-local" class="input-text-light in-flexbox " id="gift-date-input" disabled value="2020-01-20T19:30:59">
+                    <input type="checkbox" class="checkbox-input" id="gift-checkbox-input" onclick="giftTextInput.disabled = !giftCheckboxInput.checked; giftDateInput.disabled = !giftCheckboxInput.checked; generateButtonClicked()">
+                    <input type="text" class="input-text-light in-flexbox" id="gift-text-input" disabled value="Scout from tea for 2" onkeydown="generateButtonClicked()">
+                    <input type="datetime-local" class="input-text-light in-flexbox " id="gift-date-input" disabled value="2020-01-20T19:30:59" onchange="generateButtonClicked()">
                 </div>
             </div>
             
             <div class="config-input-div">
                 <p>Is crafted? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Tells if the item was crafted or not"></p>
                 <div class="action-button-divs">
-                    <input type="checkbox" class="checkbox-input" id="crafted-checkbox-input" onclick="craftedTextInput.disabled = !craftedCheckboxInput.checked" accept=".jpg, .jpeg, .png, .gif">
-                    <input type="text" class="input-text-light in-flexbox" id="crafted-text-input" disabled value="Scout from tea for 2">
+                    <input type="checkbox" class="checkbox-input" id="crafted-checkbox-input" onclick="craftedTextInput.disabled = !craftedCheckboxInput.checked; generateButtonClicked()">
+                    <input type="text" class="input-text-light in-flexbox" id="crafted-text-input" disabled value="Scout from tea for 2" onkeydown="generateButtonClicked()">
                 </div>
             </div>
 
@@ -369,31 +373,31 @@
                 <div class="main-attributes-div">
                     
                     <div class="action-button-divs">
-                        <input type="checkbox" class="checkbox-input" id="item-set-checkbox-input"  accept=".jpg, .jpeg, .png, .gif" onclick="itemSetCheckboxInputOnClick()">
+                        <input type="checkbox" class="checkbox-input" id="item-set-checkbox-input" onclick="itemSetCheckboxInputOnClick(); generateButtonClicked()">
 
                         <div class="vertical-column">
-                            <input type="text" class="input-text-light in-flexbox" id="item-set-text-input" disabled value="Item set name" style="width: auto; margin-bottom: 5px;">
+                            <input type="text" class="input-text-light in-flexbox" id="item-set-text-input" disabled value="Item set name" style="width: auto; margin-bottom: 5px;" onkeydown="generateButtonClicked()">
                             
                             
                             <div class="item-set-div margin-left" id="item-set-div">
                             
                             
                                 <div class="item-set-item-div">
-                                    <input type="text" class="item-set-text-input" value="Item set member #1">
-                                    <select name="" id="" class="item-set-select-input">
+                                    <input type="text" class="item-set-text-input" value="Item set member #1" onkeydown="generateButtonClicked()">
+                                    <select name="" id="" class="item-set-select-input" onchange="generateButtonClicked()">
                                         <option value="complete">Complete</option>
                                         <option value="incomplete">Incomplete</option>
                                     </select>
-                                    <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode) "><img src="./media/images/delete.png" alt="" height="20px" width="20px" ;></button>
+                                    <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode); generateButtonClicked() "><img src="./media/images/delete.png" alt="" height="20px" width="20px" ;></button>
                                 </div>
 
                                 <div class="item-set-item-div">
-                                    <input type="text" class="item-set-text-input" value="Item set member #2">
-                                    <select name="" id="" class="item-set-select-input">
+                                    <input type="text" class="item-set-text-input" value="Item set member #2" onkeydown="generateButtonClicked()">
+                                    <select name="" id="" class="item-set-select-input" onchange="generateButtonClicked()">
                                         <option value="incomplete">Incomplete</option>
                                         <option value="complete">Complete</option>
                                     </select>
-                                    <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode) "><img src="./media/images/delete.png" alt="" height="20px" width="20px" ;></button>
+                                    <button class="attributes-delete-button" onclick="this.parentNode.parentNode.removeChild(this.parentNode); generateButtonClicked() "><img src="./media/images/delete.png" alt="" height="20px" width="20px" ;></button>
                                 </div>
   
                             </div>
@@ -411,16 +415,16 @@
             <div class="config-input-div">
                 <p>item set bonus? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the item set bonus of the item"></p>
                 <div class="action-button-divs" >
-                    <input type="checkbox" class="checkbox-input" id="item-set-bonus-checkbox-input" disabled accept=".jpg, .jpeg, .png, .gif" onclick="itemSetNameInput.disabled = !itemSetCheckboxInput.checked; itemSetBonusTextInput.disabled = !itemSetBonusCheckboxInput.checked" title="Can only be enabled if item sets is enabled">
-                    <input type="text" class="input-text-light in-flexbox" id="item-set-bonus-text-input" disabled value="Leave a calling card on your victims" disabled>
+                    <input type="checkbox" class="checkbox-input" id="item-set-bonus-checkbox-input" disabled  onclick="itemSetNameInput.disabled = !itemSetCheckboxInput.checked; itemSetBonusTextInput.disabled = !itemSetBonusCheckboxInput.checked; generateButtonClicked()" title="Can only be enabled if item sets is enabled">
+                    <input type="text" class="input-text-light in-flexbox" id="item-set-bonus-text-input" disabled value="Leave a calling card on your victims" onkeydown="generateButtonClicked()">
                 </div>
             </div>
 
             <div class="config-input-div">
                 <p>Credit text <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Give credit to yourself!"></p>
                 <div class="action-button-divs">
-                    <input type="checkbox" class="checkbox-input" id="credit-checkbox-input" onclick="creditTextInput.disabled = !creditCheckboxInput.checked" accept=".jpg, .jpeg, .png, .gif">
-                    <input type="text" class="input-text-light in-flexbox" id="credit-text-input" disabled value="Scout from tea for 2">
+                    <input type="checkbox" class="checkbox-input" id="credit-checkbox-input" onclick="creditTextInput.disabled = !creditCheckboxInput.checked; generateButtonClicked()" >
+                    <input type="text" class="input-text-light in-flexbox" id="credit-text-input" disabled value="Scout from tea for 2" onkeydown="generateButtonClicked()">
                 </div>
             </div>
             
@@ -441,6 +445,23 @@
                 <button class="input-button" id="generate-button" onclick="jsonFileInput.click()" style="margin-left: 10px;">
                     Load .json
                 </button>
+            </div>
+            
+
+            <div class="config-input-div">
+                <p>Load item preset? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the item set bonus of the item"></p>
+                <select name="" id="load-item-input" class="select-input" value="connivers_kunai" onchange="loadItemFunction()">
+                    <option value="blank">blank</option>
+                    <option value="connivers_kunai">connivers kunai</option>
+                    <option value="bat">bat</option>
+                    <option value="the_atomizer">the atomizer</option>
+                    <option value="shovel">shovel</option>
+                    <option value="the_half_zatoichi">the half-zatoichi</option>
+                    <option value="scattergun">scattergun</option>
+                    <option value="soda_popper">soda popper</option>
+                    <option value="rocket_launcher">rocket launcher</option>
+                    <option value="tomislav">tomislav</option>
+                </select>
             </div>
 
         </div>
