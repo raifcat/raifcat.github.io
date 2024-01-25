@@ -87,7 +87,10 @@
             
 
         </div>
+
+
         
+                
         <div class="config-div">
             <p class="config-text-header">Generator Options</p>
             <hr>
@@ -97,7 +100,7 @@
                 <input type="text" class="input-text" id="item-name-input" value="Conniver's Kunai" onkeydown="generateButtonClicked()">
             </div>
 
-            <div class="config-input-div">
+            <div class="config-input-div no-flex-wrap">
                 <p>Uses an item tag? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="This will remove the strange rank (If it was toggled) and puts speech marks on the item name"></p>
                 <input type="checkbox" class="checkbox-input right-side" id="item-tag-checkbox-input" accept=".jpg, .jpeg, .png, .gif" onchange="generateButtonClicked()">
             </div>
@@ -249,43 +252,43 @@
                 </div>
             </div>
 
-            <div class="config-input-div">
+            <div class="config-input-div no-flex-wrap">
                 <p>Show strange rank on name? (Show strange parts has to be toggled) <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the halloween restriction on the image"></p>
                 <input type="checkbox" class="checkbox-input right-side" id="rank-checkbox-input" onclick="generateButtonClicked()" disabled checked>
             </div>
 
-            <div class="config-input-div">
+            <div class="config-input-div no-flex-wrap">
                 <p>Is halloween restricted? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the halloween restriction on the image"></p>
                 <input type="checkbox" class="checkbox-input right-side" id="halloween-checkbox-input" onclick="generateButtonClicked()">
             </div>
 
-            <div class="config-input-div">
+            <div class="config-input-div no-flex-wrap">
                 <p>Is only visible in pyroland? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the pyroland restriction on the image"></p>
                 <input type="checkbox" class="checkbox-input right-side" id="pyroland-checkbox-input" onclick="generateButtonClicked()">
             </div>
 
-            <div class="config-input-div">
+            <div class="config-input-div no-flex-wrap">
                 <p>Is festivized? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if it's festivized or not"></p>
                 <input type="checkbox" class="checkbox-input right-side" id="festivized-checkbox-input" onclick="generateButtonClicked()">
             </div>
 
-            <div class="config-input-div">
+            <div class="config-input-div no-flex-wrap">
                 <p>Is limited edition? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if it's limited edition or not"></p>
                 <input type="checkbox" class="checkbox-input right-side" id="edition-checkbox-input" onclick="generateButtonClicked()">
             </div>
 
             <div class="config-input-set-div">
-                <div class="config-input-div">
+                <div class="config-input-div no-flex-wrap">
                     <p>Isn't marketable or tradable? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if the item is tradable or marketable"></p>
                     <input type="checkbox" class="checkbox-input right-side" id="tradable-checkbox-input" onclick="achievementCheckboxInput.disabled = !tradableCheckboxInput.checked; craftableCheckboxInput.disabled = tradableCheckboxInput.checked; generateButtonClicked()">
                 </div>
 
-                <div class="config-input-div">
+                <div class="config-input-div no-flex-wrap">
                     <p>Isn't usable in crafting? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if the item is usable in crafting"></p>
                     <input type="checkbox" class="checkbox-input right-side" id="crafting-checkbox-input" onclick="tradableCheckboxInput.disabled = craftableCheckboxInput.checked; generateButtonClicked()" >
                 </div>
 
-                <div class="config-input-div">
+                <div class="config-input-div no-flex-wrap">
                     <p>Is an achievement item? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if the item is an achievment item"></p>
                     <input type="checkbox" class="checkbox-input right-side" id="achievement-checkbox-input" onclick="generateButtonClicked()" disabled>
                 </div>
@@ -428,7 +431,7 @@
                 </div>
             </div>
             
-            <div class="action-button-divs">
+            <div class="action-button-divs-main">
                 <!--
                 <button class="input-button" id="generate-button" onclick="generateButtonClicked()">
                     Generate
@@ -467,8 +470,11 @@
         </div>
 
         
+        <p class="big-disclaimer">WARNING: Since you are using a small screen, downloading / copying the png will result in the item card being smaller (due to it simulating a screenshot)</p>
 
     </div>
+
+    
 
     <input type="file" name="" accept=".json" id="json-file-input" style="display: none;" onchange="loadJSONFile()">
 
