@@ -105,7 +105,7 @@ hr{
     margin-top: 2px;
     margin-bottom: 0;
     font-size: 25px;
-    width: 620px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -602,6 +602,17 @@ input[type=date] input.form-control {
     display: flex;
     flex-wrap: wrap;
 }
+
+#strange-counters-list-div{
+    display: flex !important;
+    flex-wrap: wrap;
+}
+
+#item-set-list-div{
+    display: flex !important;
+    flex-wrap: wrap;
+}
+
 
 
 .big-disclaimer{
