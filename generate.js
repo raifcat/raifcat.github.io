@@ -165,7 +165,15 @@ function generateButtonClicked(){
     }
     
     cardItemName.style.color = qualityColours[itemQualityInput.value]
-    cardItemLevel.innerHTML = `Level ${itemLevelInput.value} ${itemTypeInput.value}`
+
+
+    if (limitedEditionCheckBoxInput.checked) {
+        cardItemLevel.style.color = "yellow"
+        cardItemLevel.innerHTML = `Limited ${itemTypeInput.value}`
+    } else {
+        cardItemLevel.style.color = "rgb(114,103,90)"
+        cardItemLevel.innerHTML = `Level ${itemLevelInput.value} ${itemTypeInput.value}`
+    }
 
     attributesText = []
     attributesTextType = []
@@ -303,6 +311,7 @@ function generateButtonClicked(){
         cardItemStrangeIcon.style.display = "none"
         cardItemLevel.style.display = "block"
         cardItemStrangeCounterDiv.style.display = "none"
+        cardItemStrangeCounterDiv.innerHTML = ""
     }
 
     if (halloweenCheckboxInput.checked) {
@@ -319,11 +328,7 @@ function generateButtonClicked(){
         cardItemPyrovisionIcon.style.display = "none"
     }
 
-    if (limitedEditionCheckBoxInput.checked){
-        cardItemLevel.style.color = "yellow"
-    } else{
-        cardItemLevel.style.color = "rgb(114,103,90)"
-    }
+
 
     if (giftCheckboxInput.checked){
         const months = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
