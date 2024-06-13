@@ -5,10 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="general.css">
+    <link rel="stylesheet" href="darkmode.css">
+    
 </head>
-<body>
-    <div class="main-div">
-        <h1>my very nice website</h1>
+<body class="a">
+    <button class="homepage-button" id="homepage-button" onclick="darkmodeButtonClick()">Darkmode</button>
+
+    <div class="main-div" id="main-div">
+        <h1 id="main-header">my website</h1>
+        <p id="main-description">a website where i make stuff</p>
+
+        <div class="card-div">
+
+            <a href="./tf2weaponmaker/index.html" class="card-a">
+                <div class="card" style="background-image: url(./media/images/tf2weaponcreatoricon.png); border: solid 5px rgba(41,37,38, 0.6);">
+                    <p style="font-family: TF2Build;">TF2 Weapon Creator</p>
+                </div>
+            </a>
+            
+        </div>
     </div>
+    <script src="./index.js"></script>
 </body>
 </html>
