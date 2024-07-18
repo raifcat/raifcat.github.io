@@ -20,6 +20,10 @@ const craftableCheckboxInput = document.getElementById("crafting-checkbox-input"
 const achievementCheckboxInput = document.getElementById("achievement-checkbox-input")
 
 const halloweenCheckboxInput = document.getElementById("halloween-checkbox-input")
+
+const restrictedTextInput = document.getElementById("restricted-name-input")
+const restrictedCheckboxInput = document.getElementById("restricted-checkbox-input")
+
 const pyrolandCheckboxInput = document.getElementById("pyroland-checkbox-input")
 
 const craftedCheckboxInput = document.getElementById("crafted-checkbox-input")
@@ -223,18 +227,37 @@ function generateButtonClicked(){
         cardItemLimitedText.style.display = "none"
     }
 
-    if (tradableCheckboxInput.checked && !tradableCheckboxInput.disabled && !achievementCheckboxInput.checked){
-        cardItemTradableText.innerHTML = "( Not Tradable or Marketable )"
+    cardItemTradableText.style.display = "none"
+
+    if (tradableCheckboxInput.checked || craftableCheckboxInput.checked || achievementCheckboxInput.checked){
         cardItemTradableText.style.display = "block"
-    } else if (tradableCheckboxInput.checked && !tradableCheckboxInput.disabled && achievementCheckboxInput.checked && !achievementCheckboxInput.disabled){
-        cardItemTradableText.innerHTML = "( Achievement Item: Not Tradable or Marketable )"
-        cardItemTradableText.style.display = "block"
-    } else if (craftableCheckboxInput.checked && !craftableCheckboxInput.disabled){
-        cardItemTradableText.innerHTML = "( Not Usable in Crafting )"
-        cardItemTradableText.style.display = "block"
-    } else{
-        cardItemTradableText.innerHTML = ""
-        cardItemTradableText.style.display = "none"
+        var achievementText = ""
+        var tradableText = ""
+        var craftedText = ""
+        var not = "Not"
+
+        if (achievementCheckboxInput.checked){
+            achievementText = "Achievment Item:"
+        }
+
+        if (tradableCheckboxInput.checked){
+            tradableText = "Tradable or Marketable"
+
+            if (craftableCheckboxInput.checked){
+                tradableText = "Tradable, Marketable or "
+            }
+        }
+
+        if (craftableCheckboxInput.checked){
+            craftedText = "Usable in Crafting"
+        }
+
+        if (achievementCheckboxInput.checked && !tradableCheckboxInput.checked && !craftableCheckboxInput.checked) {
+            achievementText = "Achievment Item"
+            not = ""
+        }
+
+        cardItemTradableText.innerHTML = `( ${achievementText} ${not} ${tradableText}${craftedText} )`
     }
 
     if (unusualCheckboxInput.checked){
@@ -316,9 +339,14 @@ function generateButtonClicked(){
 
     if (halloweenCheckboxInput.checked) {
         cardItemHalloweenIcon.style.display = "block"
-        cardItemRestrictionText.style.display = "block"
     } else {
         cardItemHalloweenIcon.style.display = "none"
+    }
+
+    if (restrictedCheckboxInput.checked){
+        cardItemRestrictionText.style.display = "block"
+        cardItemRestrictionText.innerHTML = `Holiday Restriction: ${restrictedTextInput.value}`
+    } else {
         cardItemRestrictionText.style.display = "none"
     }
 
@@ -547,6 +575,8 @@ function generateNewStrangeCounter(){
 
 
 function takeScreenshot(){
+    document.getElementById("item-card-pos").style.width = "700px";
+
     html2canvas(document.querySelector("#item-card-div")).then(canvas => {
         var img = canvas.toDataURL("image/png");
         var image = document.createElement('a');
@@ -554,6 +584,8 @@ function takeScreenshot(){
         image.href = img;
         image.click()
     });
+    document.getElementById("item-card-pos").style.width = null;
+
 }
 
 function takeScreenshotAndCopy(){
@@ -616,6 +648,9 @@ function constructJSONFile(){
         "usesItemTag": itemTagCheckboxInput.checked,
 
         "image": cardItemImg.src,
+
+        "isRestricted": restrictedCheckboxInput.checked,
+        "restrictedText": restrictedTextInput.value,
 
         "isUnusual": unusualCheckboxInput.checked,
         "unusualEffect": unusualTextInput.value,
@@ -717,25 +752,14 @@ function jsonAssignValues(jsonData){
 
         tradableCheckboxInput.checked = jsonData["isNotTradable"]
 
-        if (jsonData["isNotTradable"]){
-            craftableCheckboxInput.disabled = true
-            achievementCheckboxInput.disabled = false
-        } else{
-            craftableCheckboxInput.disabled = false
-            achievementCheckboxInput.disabled = true
-        }
-
         craftableCheckboxInput.checked = jsonData["isNotCraftable"]
 
-        if (jsonData["isNotCraftable"]) {
-            tradableCheckboxInput.disabled = true
-            achievementCheckboxInput.disabled = true
-        } else{
-            tradableCheckboxInput.disabled = false
-            achievementCheckboxInput.disabled = false
-        }
-
         achievementCheckboxInput.checked = jsonData["isAchievment"]
+
+        restrictedCheckboxInput.checked = jsonData["isRestricted"]
+        restrictedTextInput.value = jsonData["restrictedText"]
+
+        restrictedTextInput.disabled = !restrictedCheckboxInput.checked
 
         unusualCheckboxInput.checked = jsonData["isUnusual"]
         unusualTextInput.disabled = !jsonData["isUnusual"]
@@ -938,4 +962,5 @@ function readTextFile(file) {
 
 function loadItemFunction(){
     readTextFile(`./weaponcards/${loadItemInput.value}.json`)
+    loadItemInput.value = "select"
 }
