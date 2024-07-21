@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../general.css">
     <title>TF2 Weapon Creator</title>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
     <meta name="description" content="A TF2 weapon creator">
 
 </head>
@@ -14,6 +14,9 @@
     <img src="./media/images/background.png" alt="" class="main-image" draggable="false">
 
     <button class="homepage-button" ><a href="../index.html">Home</a></button>
+
+    <p class="tool-tip" id="tool-tip">This is a tooltip! and blah blah blah blah blah blah</p>
+
 
     <div class="main-div">
 
@@ -46,6 +49,8 @@
                             <img src="./media/images/halloween_icon.png" alt="" width="35px" height="50px" id="halloween-icon" style="display: none;">
                             <img src="./media/images/strange_icon.png" alt="" width="35px" height="50px" id="strange-icon" style="display: none;">
                             <img src="./media/images/pyrovision_icon.png" alt="" width="35px" height="50px" id="pyrovision-icon" style="display: none;">
+                            <div class="paint-icon" id="paint-icon"></div>
+                            
                         </div>
                     </div>
                     
@@ -104,29 +109,29 @@
             <hr>
 
             <div class="config-input-div">
-                <p>Name <img src="./media/images/info.png" alt="" height="20px" width="20px" title="The name of the weapon"></p>
-                <input type="text" class="input-text" id="item-name-input" value="Conniver's Kunai" onkeyup="generateButtonClicked()" onkeydown="generateButtonClicked()">
+                <label onmouseover="createToolTip(0)" onmouseout="removeToolTip()" for="item-name-input">Name</label>
+                <input type="text" class="input-text" id="item-name-input" value="Conniver's Kunai" onkeyup="generateButtonClicked()" onkeydown="generateButtonClicked()" >
             </div>
 
             <div class="config-input-div no-flex-wrap">
-                <p>Uses an item tag? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="This will remove the strange rank (If it was toggled) and puts speech marks on the item name"></p>
-                <input type="checkbox" class="checkbox-input right-side" id="item-tag-checkbox-input" accept=".jpg, .jpeg, .png, .gif" onchange="generateButtonClicked()">
+                <label class="reach-end" onmouseover="createToolTip(1)" onmouseout="removeToolTip()" id="item-tag-checkbox-input-label" for="item-tag-checkbox-input">Uses an item tag?</label>
+                <div class="checkbox-input" id="item-tag-checkbox-input"><img src="./media/images/check.png" alt=""></div>
             </div>
 
             <div class="config-input-div">
-                <p>Level <img src="./media/images/info.png" alt="" height="20px" width="20px" title="The level of the weapon"></p>
+                <label onmouseover="createToolTip(2)" onmouseout="removeToolTip()" for="item-level-input">Level</label>
                 <input type="number" class="input-text-light" id="item-level-input" value="1" onkeyup="generateButtonClicked()" onkeydown="generateButtonClicked()">
                 
             </div>
             
             
             <div class="config-input-div">
-                <p>Type <img src="./media/images/info.png" alt="" height="20px" width="20px" title="The type of the weapon used alongside with the level (e.g 'Level 1 Knife')"></p>
+                <label onmouseover="createToolTip(3)" onmouseout="removeToolTip()" for="item-type-input">Type</label>
                 <input type="text" class="input-text-light" id="item-type-input" value="Knife" onkeyup="generateButtonClicked()" onkeydown="generateButtonClicked()">
             </div>
 
             <div class="config-input-div">
-                <p>Quality Color <img src="./media/images/info.png" alt="" height="20px" width="20px" title="The quality of the weapon and color of the title"></p>
+                <label onmouseover="createToolTip(4)" onmouseout="removeToolTip()" for="item-quality-input">Quality Color</label>
                 <select type="text" class="select-input" id="item-quality-input" onchange="generateButtonClicked()">
                     <option value="0" style="color: #FFD700">unique</option>
                     <option value="1" style="color: #B2B2B2">normal</option>
@@ -149,14 +154,13 @@
             </div>
 
             <div class="config-input-div">
-                <p>Image <img src="./media/images/info.png" alt="" height="20px" width="20px" title="The image used on the item card"></p>
+                <label onmouseover="createToolTip(5)" onmouseout="removeToolTip()" for="item-image-input">Image</label>
                 <input type="file" class="file-input" id="item-image-input" accept=".jpg, .jpeg, .png, .gif" onchange="generateButtonClicked()">
-                <p class="disclaimer-p">You can put a .png, jpeg or a gif (gif will trimmed)</p>
             </div>
             
 
             <div class="config-input-div">
-                <p>Attributes <img src="./media/images/info.png" alt="" height="20px" width="20px" title="The pros and cons of the weapon (e.g '-55 max health on wearer')"></p>
+                <label onmouseover="createToolTip(6)" onmouseout="removeToolTip()">Attributes</label>
                 <div class="main-attributes-div">
 
                     <div class="attributes-div" id="attributes-div">
@@ -228,10 +232,10 @@
             <hr>
 
             <div class="config-input-div">
-                <p>Show strange <br> parts? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the strange part on the image. However, the strange parts will replace the level"></p>
+                <label onmouseover="createToolTip(7)" onmouseout="removeToolTip()" for="strange-counters-checkbox-input" id="strange-counters-checkbox-input-label">Show strange parts?</label>
                 
                 <div class="action-button-divs">
-                    <input type="checkbox" class="checkbox-input right-side" id="strange-counters-checkbox-input" accept=".jpg, .jpeg, .png, .gif" onclick="rankCheckboxInput.disabled = !strangeCheckboxInput.checked; generateButtonClicked()">
+                    <div class="checkbox-input" id="strange-counters-checkbox-input"><img src="./media/images/check.png" alt=""></div>
 
                     <div class="main-attributes-div" style="margin-left: 10px;">
 
@@ -264,19 +268,20 @@
             </div>
 
             <div class="config-input-div no-flex-wrap">
-                <p>Show strange rank on name? (Show strange parts has to be toggled) <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the halloween restriction on the image"></p>
-                <input type="checkbox" class="checkbox-input right-side" id="rank-checkbox-input" onclick="generateButtonClicked()" disabled checked>
+                <label class="reach-end" onmouseover="createToolTip(8)" onmouseout="removeToolTip()" for="rank-checkbox-input" id="rank-checkbox-input-label">Show strange rank on name?</label>
+                <div class="checkbox-input disabled" id="rank-checkbox-input"><img src="./media/images/check.png" alt="" style="display: block;"></div>
             </div>
 
             <p class="config-text-header">Item set Options</p>
             <hr>
 
             <div class="config-input-div">
-                <p>Item sets <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the item sets of the item"></p>
+                <label onmouseover="createToolTip(9)" onmouseout="removeToolTip()" for="item-set-checkbox-input" id="item-set-checkbox-input-label">Item sets</label>
                 <div class="main-attributes-div">
                     
                     <div class="action-button-divs">
-                        <input type="checkbox" class="checkbox-input" id="item-set-checkbox-input" onclick="itemSetCheckboxInputOnClick(); generateButtonClicked()">
+                        <!--<input type="checkbox" class="checkbox-input" id="item-set-checkbox-input" onclick="itemSetCheckboxInputOnClick(); generateButtonClicked()">-->
+                        <div class="checkbox-input" id="item-set-checkbox-input"><img src="./media/images/check.png" alt=""></div>
 
                         <div class="vertical-column">
                             <input type="text" class="input-text-light in-flexbox" id="item-set-text-input" disabled value="Item set name" style="width: auto; margin-bottom: 5px;" onkeyup="generateButtonClicked()" onkeydown="generateButtonClicked()">
@@ -317,9 +322,9 @@
             </div>
 
             <div class="config-input-div">
-                <p>item set bonus? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the item set bonus of the item"></p>
+                <label onmouseover="createToolTip(10)" onmouseout="removeToolTip()" for="item-set-bonus-checkbox-input" id="item-set-bonus-checkbox-input-label">item set bonus?</label>
                 <div class="action-button-divs" >
-                    <input type="checkbox" class="checkbox-input" id="item-set-bonus-checkbox-input" disabled  onclick="itemSetNameInput.disabled = !itemSetCheckboxInput.checked; itemSetBonusTextInput.disabled = !itemSetBonusCheckboxInput.checked; generateButtonClicked()" title="Can only be enabled if item sets is enabled">
+                    <div class="checkbox-input disabled" id="item-set-bonus-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                     <input type="text" class="input-text-light in-flexbox" id="item-set-bonus-text-input" disabled value="Leave a calling card on your victims" onkeyup="generateButtonClicked()" onkeydown="generateButtonClicked()">
                 </div>
             </div>
@@ -328,88 +333,130 @@
             <hr>
 
             <div class="config-input-div no-flex-wrap">
-                <p>Is halloween restricted? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the halloween restriction on the image"></p>
-                <input type="checkbox" class="checkbox-input right-side" id="halloween-checkbox-input" onclick="generateButtonClicked()">
+                <label class="reach-end" onmouseover="createToolTip(11)" onmouseout="removeToolTip()" for="halloween-checkbox-input" id="halloween-checkbox-input-label">Is halloween restricted?</label>
+                <div class="checkbox-input" id="halloween-checkbox-input"><img src="./media/images/check.png" alt=""></div>
             </div>
 
             <div class="config-input-div">
-                <p>holiday restricted? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if the item is unusual or not as well as showing the effect"></p>
+                <label onmouseover="createToolTip(12)" onmouseout="removeToolTip()" for="restricted-checkbox-input" id="restricted-checkbox-input-label">holiday restricted?</label>
                 <div class="action-button-divs">
-                    <input type="checkbox" class="checkbox-input" id="restricted-checkbox-input" onclick="restrictedTextInput.disabled = !restrictedCheckboxInput.checked; generateButtonClicked()">
+                    <div class="checkbox-input" id="restricted-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                     <input type="text" class="input-text-light in-flexbox" id="restricted-name-input" disabled value="Halloween / Full Moon" onkeyup="generateButtonClicked()" onkeydown="generateButtonClicked()">
                 </div>
             </div>
 
             <div class="config-input-div no-flex-wrap">
-                <p>Is only visible in pyroland? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the pyroland restriction on the image"></p>
-                <input type="checkbox" class="checkbox-input right-side" id="pyroland-checkbox-input" onclick="generateButtonClicked()">
+                <label class="reach-end" onmouseover="createToolTip(13)" onmouseout="removeToolTip()" for="pyroland-checkbox-input" id="pyroland-checkbox-input-label">Is only visible in pyroland?</label>
+                <div class="checkbox-input" id="pyroland-checkbox-input"><img src="./media/images/check.png" alt=""></div>
             </div>
 
             <div class="config-input-div no-flex-wrap">
-                <p>Is festivized? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if it's festivized or not"></p>
-                <input type="checkbox" class="checkbox-input right-side" id="festivized-checkbox-input" onclick="generateButtonClicked()">
+                <label class="reach-end" onmouseover="createToolTip(14)" onmouseout="removeToolTip()" for="festivized-checkbox-input" id="festivized-checkbox-input-label">Is festivized?</label>
+                <div class="checkbox-input" id="festivized-checkbox-input"><img src="./media/images/check.png" alt=""></div>
             </div>
 
             <div class="config-input-div no-flex-wrap">
-                <p>Is limited edition? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if it's limited edition or not"></p>
-                <input type="checkbox" class="checkbox-input right-side" id="edition-checkbox-input" onclick="generateButtonClicked()">
+                <label class="reach-end" onmouseover="createToolTip(15)" onmouseout="removeToolTip()" for="edition-checkbox-input" id="edition-checkbox-input-label">Is limited edition?</label>
+                <div class="checkbox-input" id="edition-checkbox-input"><img src="./media/images/check.png" alt=""></div>
             </div>
 
             <div class="config-input-set-div">
                 <div class="config-input-div no-flex-wrap">
-                    <p>Isn't marketable or tradable? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if the item is tradable or marketable"></p>
-                    <input type="checkbox" class="checkbox-input right-side" id="tradable-checkbox-input" onclick="generateButtonClicked()">
+                    <label class="reach-end" onmouseover="createToolTip(16)" onmouseout="removeToolTip()" for="tradable-checkbox-input" id="tradable-checkbox-input-label">Isn't marketable or tradable?</label>
+                    <div class="checkbox-input" id="tradable-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                 </div>
 
                 <div class="config-input-div no-flex-wrap">
-                    <p>Isn't usable in crafting? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if the item is usable in crafting"></p>
-                    <input type="checkbox" class="checkbox-input right-side" id="crafting-checkbox-input" onclick="generateButtonClicked()" >
+                    <label class="reach-end" onmouseover="createToolTip(17)" onmouseout="removeToolTip()" for="crafting-checkbox-input" id="crafted-checkbox-input-label">Isn't usable in crafting?</label>
+                    <div class="checkbox-input" id="crafting-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                 </div>
 
                 <div class="config-input-div no-flex-wrap">
-                    <p>Is an achievement item? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if the item is an achievment item"></p>
-                    <input type="checkbox" class="checkbox-input right-side" id="achievement-checkbox-input" onclick="generateButtonClicked()">
+                    <label class="reach-end" onmouseover="createToolTip(18)" onmouseout="removeToolTip()" for="achievement-checkbox-input" id="achievement-checkbox-input-label">Is an achievement item?</label>
+                    <div class="checkbox-input" id="achievement-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                 </div>
+
+                <div class="config-input-div no-flex-wrap">
+                    <label class="reach-end" onmouseover="createToolTip(25)" onmouseout="removeToolTip()" for="paint-checkbox-input" id="paint-checkbox-input-label">Has paint on it?</label>
+                    <div class="checkbox-input" id="paint-checkbox-input"><img src="./media/images/check.png" alt=""></div>
+                    <select name="" class="paint-select-input" id="paint-1-select" onchange="generateButtonClicked()" disabled style="max-width: 250px;">
+                        <option value="0">Custom</option>
+                        <option value="#2F4F4F" style="color: #2F4F4F">A Color Similar to Slate</option>
+                        <option value="#7D4071" style="color: #7D4071">A Deep Commitment to Purple</option>
+                        <option value="#141414" style="color: #141414">A Distinctive Lack of Hue</option>
+                        <option value="#BCDDB3" style="color: #BCDDB3">A Mann's Mint</option>
+                        <option value="#2D2D24" style="color: #2D2D24">After Eight</option>
+                        <option value="#7E7E7E" style="color: #7E7E7E">Aged Moustache Grey</option>
+                        <option value="#E6E6E6" style="color: #E6E6E6">An Extraordinary Abundance of Tinge</option>
+                        <option value="#E7B53B" style="color: #E7B53B">Australium Gold</option>
+                        <option value="#D8BED8" style="color: #D8BED8">Color No. 216-190-216</option>
+                        <option value="#E9967A" style="color: #E9967A">Dark Salmon Injustice</option>
+                        <option value="#808000" style="color: #808000">Drably Olive</option>
+                        <option value="#729E42" style="color: #729E42">Indubitably Green</option>
+                        <option value="#CF7336" style="color: #CF7336">Mann Co. Orange</option>
+                        <option value="#A57545" style="color: #A57545">Muskelmannbraun</option>
+                        <option value="#51384A" style="color: #51384A">Noble Hatter's Violet</option>
+                        <option value="#C5AF91" style="color: #C5AF91">Peculiarly Drab Tincture</option>
+                        <option value="#FF69B4" style="color: #FF69B4">Pink as Hell</option>
+                        <option value="#694D3A" style="color: #694D3A">Radigan Conagher Brown</option>
+                        <option value="#32CD32" style="color: #32CD32">The Bitter Taste of Defeat and Lime</option>
+                        <option value="#F0E68C" style="color: #F0E68C">The Color of a Gentlemann's Business Pants</option>
+                        <option value="#7C6C57" style="color: #7C6C57">Ye Olde Rustic Colour</option>
+                        <option value="#424F3B" style="color: #424F3B">Zepheniah's Greed</option>
+                    </select>
+                    <input type="color" class="color-input" id="paint-1" onchange="generateButtonClicked()" disabled>
+                </div>
+
+                <!-- <div class="config-input-div no-flex-wrap">
+                    <label class="reach-end" onmouseover="createToolTip(26)" onmouseout="removeToolTip()" for="team-paint-checkbox-input">Has team colored paint on it?</label>
+                    <input type="checkbox" class="checkbox-input right-side" id="team-paint-checkbox-input" onclick="generateButtonClicked()">
+                    <select name="" class="paint-select-input" id="paint-1-select" disabled>
+                        
+                    </select>
+                    <input type="color" class="color-input" id="paint-2" disabled>
+                    <input type="color" class="color-input" id="paint-3" disabled>
+                </div>-->
+
             </div>
             
             <div class="config-input-div">
-                <p>Classes that can <br> use this weapon <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the classes that can use this weapon."></p>
+                <label onmouseover="createToolTip(19)" onmouseout="removeToolTip()">Classes that can <br> use this weapon</label>
                 <div class="class-input-main-div">
                     <div class="class-input-div">
                         <img src="./media/images/Scout.png" alt="" width="50px" height="50px">
-                        <input type="checkbox" class="checkbox-input right-side" id="scout-checkbox-input" onclick="generateButtonClicked()" accept=".jpg, .jpeg, .png, .gif">
+                        <div class="checkbox-input" id="scout-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                     </div>
                     <div class="class-input-div">
                         <img src="./media/images/Soldier.png" alt="" width="50px" height="50px">
-                        <input type="checkbox" class="checkbox-input right-side" id="soldier-checkbox-input" onclick="generateButtonClicked()" accept=".jpg, .jpeg, .png, .gif">
+                        <div class="checkbox-input" id="soldier-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                     </div>
                     <div class="class-input-div">
                         <img src="./media/images/Pyro.png" alt="" width="50px" height="50px">
-                        <input type="checkbox" class="checkbox-input right-side" id="pyro-checkbox-input" onclick="generateButtonClicked()" accept=".jpg, .jpeg, .png, .gif">
+                        <div class="checkbox-input" id="pyro-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                     </div>
                     <div class="class-input-div">
                         <img src="./media/images/Demoman.png" alt="" width="50px" height="50px">
-                        <input type="checkbox" class="checkbox-input right-side" id="demoman-checkbox-input" onclick="generateButtonClicked()" accept=".jpg, .jpeg, .png, .gif">
+                        <div class="checkbox-input" id="demoman-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                     </div>
                     <div class="class-input-div">
                         <img src="./media/images/Heavy.png" alt="" width="50px" height="50px">
-                        <input type="checkbox" class="checkbox-input right-side" id="heavy-checkbox-input" onclick="generateButtonClicked()" accept=".jpg, .jpeg, .png, .gif">
+                        <div class="checkbox-input" id="heavy-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                     </div>
                     <div class="class-input-div">
                         <img src="./media/images/Engineer.png" alt="" width="50px" height="50px">
-                        <input type="checkbox" class="checkbox-input right-side" id="engie-checkbox-input" onclick="generateButtonClicked()" accept=".jpg, .jpeg, .png, .gif">
+                        <div class="checkbox-input" id="engie-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                     </div>
                     <div class="class-input-div">
                         <img src="./media/images/Medic.png" alt="" width="50px" height="50px">
-                        <input type="checkbox" class="checkbox-input right-side" id="medic-checkbox-input" onclick="generateButtonClicked()" accept=".jpg, .jpeg, .png, .gif">
+                        <div class="checkbox-input" id="medic-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                     </div>
                     <div class="class-input-div">
                         <img src="./media/images/Sniper.png" alt="" width="50px" height="50px">
-                        <input type="checkbox" class="checkbox-input right-side" id="sniper-checkbox-input" onclick="generateButtonClicked()" accept=".jpg, .jpeg, .png, .gif">
+                        <div class="checkbox-input" id="sniper-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                     </div>
                     <div class="class-input-div">
                         <img src="./media/images/Spy.png" alt="" width="50px" height="50px">
-                        <input type="checkbox" class="checkbox-input right-side" id="spy-checkbox-input" onclick="generateButtonClicked()" accept=".jpg, .jpeg, .png, .gif">
+                        <div class="checkbox-input" id="spy-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                     </div>
                 </div>
                 
@@ -417,42 +464,42 @@
             </div>
             
             <div class="config-input-div">
-                <p>Is Unusual? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows if the item is unusual or not as well as showing the effect"></p>
+                <label onmouseover="createToolTip(20)" onmouseout="removeToolTip()" for="unusual-checkbox-input" id="unusual-checkbox-input-label">Is Unusual?</label>
                 <div class="action-button-divs">
-                    <input type="checkbox" class="checkbox-input" id="unusual-checkbox-input" onclick="unusualTextInput.disabled = !unusualCheckboxInput.checked; generateButtonClicked()">
+                    <div class="checkbox-input" id="unusual-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                     <input type="text" class="input-text-light in-flexbox" id="unusual-name-input" disabled value="Burning Flames" onkeyup="generateButtonClicked()" onkeydown="generateButtonClicked()">
                 </div>
             </div>
 
             <div class="config-input-div">
-                <p>Limited use? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Tells if the item has a limited use amount"></p>
+                <label onmouseover="createToolTip(21)" onmouseout="removeToolTip()" for="limited-checkbox-input" id="limited-checkbox-input-label">Limited use?</label>
                 <div class="action-button-divs">
-                    <input type="checkbox" class="checkbox-input" id="limited-checkbox-input" onclick="limitedTextInput.disabled = !limitedCheckboxInput.checked; generateButtonClicked()">
+                    <div class="checkbox-input" id="limited-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                     <input type="number" class="input-text-light in-flexbox" id="limited-amount-input" disabled value="5" onkeyup="generateButtonClicked()" onkeydown="generateButtonClicked()">
                 </div>
             </div>
 
             <div class="config-input-div">
-                <p>Is a gift? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Tells if the item was a gift or not"></p>
+                <label onmouseover="createToolTip(22)" onmouseout="removeToolTip()" for="gift-checkbox-input" for="gift-checkbox-input" id="gift-checkbox-input-label">Is a gift?</label>
                 <div class="action-button-divs">
-                    <input type="checkbox" class="checkbox-input" id="gift-checkbox-input" onclick="giftTextInput.disabled = !giftCheckboxInput.checked; giftDateInput.disabled = !giftCheckboxInput.checked; generateButtonClicked()">
+                    <div class="checkbox-input" id="gift-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                     <input type="text" class="input-text-light in-flexbox" id="gift-text-input" disabled value="Scout from tea for 2" onkeyup="generateButtonClicked()" onkeydown="generateButtonClicked()">
                     <input type="datetime-local" class="input-text-light in-flexbox " id="gift-date-input" disabled value="2020-01-20T19:30:59" onchange="generateButtonClicked()">
                 </div>
             </div>
             
             <div class="config-input-div">
-                <p>Is crafted? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Tells if the item was crafted or not"></p>
+                <label onmouseover="createToolTip(23)" onmouseout="removeToolTip()" for="crafted-checkbox-input" id="crafteding-checkbox-input-label">Is crafted?</label>
                 <div class="action-button-divs">
-                    <input type="checkbox" class="checkbox-input" id="crafted-checkbox-input" onclick="craftedTextInput.disabled = !craftedCheckboxInput.checked; generateButtonClicked()">
+                    <div class="checkbox-input" id="crafted-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                     <input type="text" class="input-text-light in-flexbox" id="crafted-text-input" disabled value="Scout from tea for 2" onkeyup="generateButtonClicked()" onkeydown="generateButtonClicked()">
                 </div>
             </div>
 
             <div class="config-input-div">
-                <p>Credit text <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Give credit to yourself!"></p>
+                <label onmouseover="createToolTip(24)" onmouseout="removeToolTip()" for="credit-checkbox-input" id="credit-checkbox-input-label">Credit text</label>
                 <div class="action-button-divs">
-                    <input type="checkbox" class="checkbox-input" id="credit-checkbox-input" onclick="creditTextInput.disabled = !creditCheckboxInput.checked; generateButtonClicked()" >
+                    <div class="checkbox-input" id="credit-checkbox-input"><img src="./media/images/check.png" alt=""></div>
                     <input type="text" class="input-text-light in-flexbox" id="credit-text-input" disabled value="Scout from tea for 2" onkeyup="generateButtonClicked()" onkeydown="generateButtonClicked()">
                 </div>
             </div>
@@ -481,7 +528,7 @@
                 
 
                 <div class="config-input-div">
-                    <p>Load item preset? <img src="./media/images/info.png" alt="" height="20px" width="20px" title="Shows the item set bonus of the item"></p>
+                    <label onmouseover="createToolTip(26)" onmouseout="removeToolTip()" for="load-item-input">Load item preset?</label>
                     <select name="" id="load-item-input" class="select-input" value="connivers_kunai" onchange="loadItemFunction()">
                         <option value="select" style="color: rgb(80, 80, 80)">select preset</option>
                         <option value="blank">blank</option>
@@ -495,6 +542,7 @@
                         <option value="rocket_launcher">rocket launcher</option>
                         <option value="tomislav">tomislav</option>
                         <option value="crusaders_crossbow">crusader's crossbow</option>
+                        <option value="dueling_minigame">dueling minigame</option>
                     </select>
                 </div>
 
