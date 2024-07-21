@@ -4,6 +4,10 @@ const itemNameInput = document.getElementById("item-name-input");
 const itemLevelInput = document.getElementById("item-level-input");
 const itemTypeInput = document.getElementById("item-type-input");
 const itemQualityInput = document.getElementById("item-quality-input");
+
+var itemImageCheckboxInput = true
+const itemImageCheckboxDiv = document.getElementById("image-checkbox-input")
+const itemCardImgDiv = document.getElementById("item-card-img-div")
 const itemImageInput = document.getElementById("item-image-input");
 
 var unusualCheckboxInput = false
@@ -492,6 +496,12 @@ function generateButtonClicked(){
     if (sniperCheckboxInput) { cardItemSniperImg.style.display = "block" } else { cardItemSniperImg.style.display = "none" }
     if (spyCheckboxInput) { cardItemSpyImg.style.display = "block" } else { cardItemSpyImg.style.display = "none" }
 
+    if(itemImageCheckboxInput){
+        itemCardImgDiv.style.display = "block"
+    }else{
+        itemCardImgDiv.style.display = "none"
+    }
+
     if (creditCheckboxInput){
         cardItemCreditText.style.display = "block"
         cardItemCreditText.innerHTML = `Made by ${creditTextInput.value}`
@@ -583,6 +593,9 @@ function generateButtonClicked(){
 
     checkboxUpdateImg("creditCheckboxInput", creditCheckboxDiv)
     creditTextInput.disabled = !creditCheckboxInput
+
+    checkboxUpdateImg("itemImageCheckboxInput", itemImageCheckboxDiv)
+    itemImageInput.disabled = !itemImageCheckboxInput
 }
 
 function checkboxUpdateImg(input, div){
@@ -652,6 +665,8 @@ checkboxEventListener(limitedCheckboxDiv, "limitedCheckboxInput", "limited-check
 checkboxEventListener(giftCheckboxDiv, "giftCheckboxInput", "gift-checkbox-input-label")
 checkboxEventListener(craftedCheckboxDiv, "craftedCheckboxInput", "crafteding-checkbox-input-label")
 checkboxEventListener(creditCheckboxDiv, "creditCheckboxInput", "credit-checkbox-input-label")
+
+checkboxEventListener(itemImageCheckboxDiv, "itemImageCheckboxInput")
 
 // Set up the loop with setInterval
 setInterval(generateButtonClicked, 2000);              
@@ -850,6 +865,7 @@ function constructJSONFile(){
         "isAchievment": achievementCheckboxInput,
         "usesItemTag": itemTagCheckboxInput,
 
+        "imageEnabled": itemImageCheckboxInput,
         "image": cardItemImg.src,
 
         "isRestricted": restrictedCheckboxInput,
@@ -955,6 +971,7 @@ function jsonAssignValues(jsonData){
         pyrolandCheckboxInput = jsonData["isPyrolandRestricted"]
         itemTagCheckboxInput = jsonData["usesItemTag"]
 
+        itemImageCheckboxInput = jsonData["imageEnabled"] ?? true
         cardItemImg.src = jsonData["image"]
 
         tradableCheckboxInput = jsonData["isNotTradable"]
@@ -969,7 +986,7 @@ function jsonAssignValues(jsonData){
         restrictedTextInput.disabled = !restrictedCheckboxInput
 
         monoPaintCheckboxInput = jsonData["isPainted"]
-        monoPaintColorInput.value = jsonData["paintColor"]
+        monoPaintColorInput.value = jsonData["paintColor"] ?? "#000000"
         monoPaintSelectInput.value = jsonData["paintSelected"]
 
         unusualCheckboxInput = jsonData["isUnusual"]
@@ -1191,7 +1208,7 @@ tooltips = ['The name of the item e.g: "<span style="font-family: Tf2build">Tomi
             'The level of the item e.g: "15"',
             'The type of item. e.g: "Bat"',
             'The color of the item name. e.g: "<span style="color: #CF6A32; font-family: Tf2build;">Strange Weapon</span>"',
-            'The image of the item <br> <span class="grey">(Accepts .png, .jpg, and gif) <br> (gif will be trimmed due to base64 limitations)</span> <img src="https://www.shutterstock.com/image-vector/surprised-shocked-scared-astonished-emoticon-600w-483529231.jpg" width="10px" height="10px">',
+            'The image of the item <br> <span class="grey">(Accepts .png, .jpg, gif, and .webp) <br> (gif will be trimmed due to base64 limitations)</span> <img src="https://www.shutterstock.com/image-vector/surprised-shocked-scared-astonished-emoticon-600w-483529231.jpg" width="10px" height="10px">',
             'The attributes of the item to determine if its <span class="positive-color">positive</span>, <span class="negative-color">negative</span>, or <span class="neutral-color">neutral</span>',
             'Adds strange parts on the item as well as replace the level with the first part and gives the item name a rank.',
             'Adds the rank of the strange item on the name. e.g: "<span style="color: #CF6A32; font-family: Tf2build;">Sufficiently Lethal Knife</span>" <span class="grey">(Show strange parts? has to be toggle first)</span>',

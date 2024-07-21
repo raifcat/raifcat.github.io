@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="item-card-img-div-center">
-                    <div class="item-card-img-div">
+                    <div class="item-card-img-div" id="item-card-img-div">
                         <img src="./media/images/placeholder.png" alt="" id="item-card-img"> 
 
                         <div class="item-card-img-icons">
@@ -155,7 +155,8 @@
 
             <div class="config-input-div">
                 <label onmouseover="createToolTip(5)" onmouseout="removeToolTip()" for="item-image-input">Image</label>
-                <input type="file" class="file-input" id="item-image-input" accept=".jpg, .jpeg, .png, .gif" onchange="generateButtonClicked()">
+                <div class="checkbox-input" id="image-checkbox-input" style="margin-right: 10px;"><img src="./media/images/check.png" alt="" style="display: block;"></div>
+                <input type="file" class="file-input" id="item-image-input" accept=".jpg, .jpeg, .png, .gif, .webp" onchange="generateButtonClicked()">
             </div>
             
 
